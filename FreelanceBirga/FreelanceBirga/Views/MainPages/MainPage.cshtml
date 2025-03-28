@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Главная страница</title>
+</head>
+<body>
+    <h1>Добро пожаловать!</h1>
+
+    @if (ViewBag.ExecutorRole)
+    {
+            <div>
+                <h2>Меню для исполнителя</h2>
+                <ul>
+                    <li><a href="/tasks">Мои задачи</a></li>
+                    <li><a href="/profile">Профиль</a></li>
+                </ul>
+            </div>
+    }
+    else if (ViewBag.CustomerRole)
+    {
+            <div>
+                <h2>Меню для заказчика</h2>
+                <ul>
+                    <li><a href="/orders">Мои заказы</a></li>
+                    <li><a href="/settings">Настройки</a></li>
+                </ul>
+            </div>
+    }
+    else
+    {
+            <div>
+                <h2>Вы не выбрали роль!</h2>
+                    <form method="post" action="/MainPages/OpenExexutorRegestration">
+                        <label for="role">Выберите роль:</label>
+                        <select id="role" name="role">
+                            <option value="Executor">Исполнитель</option>
+                            <option value="Customer">Заказчик</option>
+                        </select>
+                        <button type="submit">Зарегистрироваться</button>
+                    </form>
+            </div>
+    }
+</body>
+</html>

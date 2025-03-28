@@ -1,0 +1,30 @@
+﻿@model AutorizationViewModel
+
+<h2>Авторизация</h2>
+
+<form asp-action="Autorization" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+  
+
+    <div class="form-group">
+        <label asp-for="Login">Логин</label>
+        <input asp-for="Login" class="form-control" />
+        <span asp-validation-for="Login" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password">Пароль</label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary mt-3">Авторизоватся</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

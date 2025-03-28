@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Регистрация исполнителя</title>
+    <style>
+        .registration-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .main-form {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .form-fields {
+            flex: 2;
+            min-width: 500px;
+        }
+
+        .tags-section {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #Discription {
+            height: 250px;
+            resize: vertical;
+        }
+
+        .tag-input-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        #tagInput {
+            flex-grow: 1;
+            padding: 12px;
+        }
+
+        .add-tag-btn {
+            padding: 12px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .add-tag-btn:hover {
+            background: #45a049;
+        }
+
+        .tags-panel {
+            border: 1px solid #ddd;
+            padding: 15px;
+            min-height: 150px;
+            max-height: 300px;
+            overflow-y: auto;
+            border-radius: 4px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag-item {
+            background: #e0f7fa;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .submit-btn-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .submit-btn {
+            padding: 15px 40px;
+            background: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #1976D2;
+        }
+
+        .text-danger {
+            color: #ff4444;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <h2>Регистрация исполнителя</h2>
+
+        <form class="main-form" method="post" action="/AddRole/Executor" id="registrationForm">
+            @Html.AntiForgeryToken()
+
+            <div class="form-fields">
+                <div class="form-section">
+                    <label for="Username">Никнейм:</label>
+                    <input type="text" id="Username" name="Username" required>
+                    @if (ViewContext.ModelState.TryGetValue("Username", out var entry) && entry.Errors.Count > 0)
+                    {
+                            <span class="text-danger">@entry.Errors.First().ErrorMessage</span>
+                    }
+                </div>
+
+                <div class="form-section">
+                    <label for="Description">Описание:</label>
+                    <textarea id="Description" name="Description" 
+                              placeholder="Расскажите о своих навыках и опыте..." 
+                              required></textarea>
+                </div>
+            </div>
+
+            <div class="tags-section">
+                <div class="form-section">
+                    <label>Добавьте теги:</label>
+                    <div class="tag-input-container">
+                        <input type="text" id="tagInput" placeholder="Например: дизайн, программирование">
+                        <button type="button" class="add-tag-btn" onclick="addTag()">Добавить</button>
+                    </div>
+                    <div class="tags-panel" id="tagsPanel"></div>
+                </div>
+            </div>
+
+            <div id="tagsContainer"></div>
+        </form>
+
+        <div class="submit-btn-container">
+            <button type="submit" class="submit-btn" form="registrationForm">
+                Зарегистрироваться
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function addTag() {
+            const tagInput = document.getElementById('tagInput');
+            const tagsPanel = document.getElementById('tagsPanel');
+            const tag = tagInput.value.trim();
+
+            if (tag) {
+                const tagElement = document.createElement('span');
+                tagElement.className = 'tag-item';
+                tagElement.innerHTML = `
+                    ${tag}
+                    <span class="remove-tag" onclick="this.parentElement.remove(); updateHiddenTags()">×</span>
+                `;
+
+                tagsPanel.appendChild(tagElement);
+                updateHiddenTags();
+                tagInput.value = '';
+            }
+        }
+
+        function updateHiddenTags() {
+            const tagsContainer = document.getElementById('tagsContainer');
+            tagsContainer.innerHTML = '';
+
+            Array.from(document.querySelectorAll('.tag-item')).forEach((tag, index) => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = `Tags[${index}]`;
+                input.value = tag.firstChild.textContent.trim();
+                tagsContainer.appendChild(input);
+            });
+
+        }
+        document.getElementById('tagInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                addTag();
+            }
+        });
+    </script>
+</body>
+</html>
