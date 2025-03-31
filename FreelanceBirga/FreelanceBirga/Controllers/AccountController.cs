@@ -47,9 +47,11 @@ public class AccountController : Controller
                 Login = model.Login,
                 Password = HashPassword(model.Password)
             };
-            HttpContext.Session.SetInt32("UserId", user.Id);
+          
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
+
+            HttpContext.Session.SetInt32("UserId", user.Id);
 
             return RedirectToAction("MainPage", "MainPages");
         }

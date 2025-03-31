@@ -146,7 +146,7 @@
                 <div class="form-section">
                     <label>Добавьте теги:</label>
                     <div class="tag-input-container">
-                        <input type="text" id="tagInput" placeholder="Например: дизайн, программирование">
+                        <input type="text" id="tagInput" maxlength="18" placeholder="Например: дизайн, программирование">
                         <button type="button" class="add-tag-btn" onclick="addTag()">Добавить</button>
                     </div>
                     <div class="tags-panel" id="tagsPanel"></div>
@@ -164,44 +164,54 @@
     </div>
 
     <script>
-        function addTag() {
-            const tagInput = document.getElementById('tagInput');
-            const tagsPanel = document.getElementById('tagsPanel');
-            const tag = tagInput.value.trim();
+    function addTag() {
+        const tagInput = document.getElementById('tagInput');
+        const tagsPanel = document.getElementById('tagsPanel');
+        const tag = tagInput.value.trim();
 
-            if (tag) {
-                const tagElement = document.createElement('span');
-                tagElement.className = 'tag-item';
-                tagElement.innerHTML = `
-                    ${tag}
-                    <span class="remove-tag" onclick="this.parentElement.remove(); updateHiddenTags()">×</span>
-                `;
-
-                tagsPanel.appendChild(tagElement);
-                updateHiddenTags();
-                tagInput.value = '';
-            }
-        }
-
-        function updateHiddenTags() {
-            const tagsContainer = document.getElementById('tagsContainer');
-            tagsContainer.innerHTML = '';
-
-            Array.from(document.querySelectorAll('.tag-item')).forEach((tag, index) => {
-                const input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = `Tags[${index}]`;
-                input.value = tag.firstChild.textContent.trim();
-                tagsContainer.appendChild(input);
+        if (tag) {
+            const existingTags = Array.from(tagsPanel.querySelectorAll('.tag-item')).map(tagElement => {
+                return tagElement.firstChild.textContent.trim().toLowerCase();
             });
 
-        }
-        document.getElementById('tagInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                addTag();
+            if (existingTags.includes(tag.toLowerCase())) {
+                alert('Этот тег уже был добавлен');
+                tagInput.value = '';
+                return;
             }
+
+            const tagElement = document.createElement('span');
+            tagElement.className = 'tag-item';
+            tagElement.innerHTML = `
+                ${tag}
+                <span class="remove-tag" onclick="this.parentElement.remove(); updateHiddenTags()">×</span>
+            `;
+
+            tagsPanel.appendChild(tagElement);
+            updateHiddenTags();
+            tagInput.value = '';
+        }
+    }
+
+    function updateHiddenTags() {
+        const tagsContainer = document.getElementById('tagsContainer');
+        tagsContainer.innerHTML = '';
+
+        Array.from(document.querySelectorAll('.tag-item')).forEach((tag, index) => {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = `Tags[${index}]`;
+            input.value = tag.firstChild.textContent.trim();
+            tagsContainer.appendChild(input);
         });
-    </script>
+    }
+
+    document.getElementById('tagInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            addTag();
+        }
+    });
+</script>
 </body>
 </html>

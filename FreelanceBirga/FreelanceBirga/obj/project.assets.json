@@ -4785,11 +4785,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\FreelanceBirga\\FreelanceBirga\\FreelanceBirga.csproj",
+      "projectUniqueName": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\FreelanceBirga.csproj",
       "projectName": "FreelanceBirga",
-      "projectPath": "D:\\FreelanceBirga\\FreelanceBirga\\FreelanceBirga.csproj",
+      "projectPath": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\FreelanceBirga.csproj",
       "packagesPath": "C:\\Users\\HONOR\\.nuget\\packages\\",
-      "outputPath": "D:\\FreelanceBirga\\FreelanceBirga\\obj\\",
+      "outputPath": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

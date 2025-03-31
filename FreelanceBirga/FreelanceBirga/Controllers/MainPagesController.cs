@@ -13,6 +13,25 @@ namespace FreelanceBirga.Controllers
         {
             _context = context;
         }
+        [HttpGet]
+        public async Task<IActionResult> AboutMeCustomer()
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (!userId.HasValue)
+            {
+                return RedirectToAction("Autorization", "Account");
+            }
+
+            var customer = await _context.Customers
+                .FirstOrDefaultAsync(c => c.UserID == userId.Value);
+
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+            return View(customer);
+        }
         [HttpPost]
         public  IActionResult OpenExexutorRegestration(string role)
         {
@@ -39,8 +58,11 @@ namespace FreelanceBirga.Controllers
                 {
                     ViewBag.ExecutorRole = true;
                 }
-            
-           
+                if (await _context.Customers.AnyAsync(e => e.UserID == user.Id))
+                {
+                    ViewBag.CustomerRole = true;
+                }
+
 
             return View();
         }

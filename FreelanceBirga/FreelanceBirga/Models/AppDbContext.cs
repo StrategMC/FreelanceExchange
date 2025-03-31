@@ -8,4 +8,7 @@ public class AppDbContext : DbContext
 
     public DbSet<User> Users { get; set; }
     public DbSet<Executor> Executors { get; set; }
+    public DbSet<Customer> Customers { get; set; }
+    public DbSet<Tag> Tags { get; set; }
+    public DbSet<ExecutorTag> ExecutorsTag { get; set; }
 }

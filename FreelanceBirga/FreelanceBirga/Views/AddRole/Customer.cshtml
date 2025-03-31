@@ -1,4 +1,88 @@
-﻿@page
-@model FreelanceBirga.Views.AddRole.CustomerrModel
-<h2>Регистрация заказчика</h2>
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Регистрация заказчика</title>
+    <style>
+        .registration-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #Description {
+            height: 250px;
+            resize: vertical;
+        }
+
+        .submit-btn-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .submit-btn {
+            padding: 15px 40px;
+            background: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #1976D2;
+        }
+
+        .text-danger {
+            color: #ff4444;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <h2>Регистрация заказчика</h2>
+
+        <form method="post" action="/AddRole/Customer" id="registrationForm">
+            @Html.AntiForgeryToken()
+
+            <div class="form-section">
+                <label for="Username">Никнейм:</label>
+                <input type="text" id="Username" name="Username" required>
+                @if (ViewContext.ModelState.TryGetValue("Username", out var entry) && entry.Errors.Count > 0)
+                {
+                        <span class="text-danger">@entry.Errors.First().ErrorMessage</span>
+                }
+            </div>
+
+            <div class="form-section">
+                <label for="Description">Описание:</label>
+                <textarea id="Description" name="Description" 
+                          placeholder="Расскажите о сфере вашей деятельности и каких исполнителей ищете..." 
+                          required></textarea>
+            </div>
+
+            <div class="submit-btn-container">
+                <button type="submit" class="submit-btn">
+                    Зарегистрироваться
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -18,13 +18,20 @@
     }
     else if (ViewBag.CustomerRole)
     {
-            <div>
-                <h2>Меню для заказчика</h2>
-                <ul>
-                    <li><a href="/orders">Мои заказы</a></li>
-                    <li><a href="/settings">Настройки</a></li>
-                </ul>
+        <div class="customer-menu">
+            <h2>Меню для заказчика</h2>
+            <div class="menu-buttons">
+                <a href="/orders" class="menu-button">
+                    <i class="fas fa-list-alt"></i> Мои заказы
+                </a>
+                <a href="/settings" class="menu-button">
+                    <i class="fas fa-cog"></i> Настройки
+                </a>
+                <a href="/MainPages/AboutMe/AboutMeCustomer" class="menu-button">
+                      <i class="fas fa-user"></i> Мой профиль
+               </a>
             </div>
+        </div>
     }
     else
     {
