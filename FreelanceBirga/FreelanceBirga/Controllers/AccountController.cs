@@ -24,6 +24,12 @@ public class AccountController : Controller
         return View();
     }
     [HttpPost]
+    public IActionResult Logout()
+    {
+        HttpContext.Session.Clear();
+        return RedirectToAction("MainPage", "MainPages");
+    }
+    [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Registration(RegistrationViewModel model)
     {

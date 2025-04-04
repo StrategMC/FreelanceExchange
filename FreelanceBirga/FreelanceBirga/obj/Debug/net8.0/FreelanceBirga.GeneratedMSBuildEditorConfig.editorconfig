@@ -26,6 +26,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\FRELANCE\FreelanceExchange\FreelanceBirga\FreelanceBirga
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/FRELANCE/FreelanceExchange/FreelanceBirga/FreelanceBirga/Views/AboutMe/AboutMeCustomer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRNZVxBYm91dE1lQ3VzdG9tZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FRELANCE/FreelanceExchange/FreelanceBirga/FreelanceBirga/Views/AboutMe/AboutMeExecutor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRNZVxBYm91dE1lRXhlY3V0b3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/FRELANCE/FreelanceExchange/FreelanceBirga/FreelanceBirga/Views/Account/Autorization.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBdXRvcml6YXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -44,10 +52,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/FRELANCE/FreelanceExchange/FreelanceBirga/FreelanceBirga/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/FRELANCE/FreelanceExchange/FreelanceBirga/FreelanceBirga/Views/MainPages/AboutMe/AboutMeCustomer.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFpblBhZ2VzXEFib3V0TWVcQWJvdXRNZUN1c3RvbWVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/FRELANCE/FreelanceExchange/FreelanceBirga/FreelanceBirga/Views/MainPages/MainPage.cshtml]

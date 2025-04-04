@@ -21,8 +21,10 @@
 
 
     <button type="submit" class="btn btn-primary mt-3">Авторизоватся</button>
+    <a asp-controller="Account" asp-action="Registration" class="btn btn-secondary mt-3">
+    Зарегистрироваться
+    </a>
 </form>
-
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

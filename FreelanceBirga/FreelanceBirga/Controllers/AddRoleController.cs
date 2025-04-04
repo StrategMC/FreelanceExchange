@@ -19,11 +19,21 @@ namespace FreelanceBirga.Controllers
         [HttpGet]
         public IActionResult Executor()
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (!userId.HasValue)
+            {
+                return RedirectToAction("Autorization", "Account");
+            }
             return View();
         }
         [HttpGet]
         public IActionResult Customer()
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (!userId.HasValue)
+            {
+                return RedirectToAction("Autorization", "Account");
+            }
             return View();
         }
         [HttpPost]
@@ -68,29 +78,31 @@ namespace FreelanceBirga.Controllers
 
 
                 ExecutorTag executortag;
-                for (int i=0;i< model.Tags.Count;i++)
+                for (int i = 0; i < model.Tags.Count; i++)
                 {
-                     if (await SuchCategory(model.Tags[0]))
-                     {
-                         executortag = new ExecutorTag
+                    if (await SuchCategory(model.Tags[i]))  
+                    {
+                        executortag = new ExecutorTag
                         {
                             UserID = executor.UserID,
-                            TagID =Convert.ToInt32(SuchCategoryId(model.Tags[i]))
+                            TagID = Convert.ToInt32(SuchCategoryId(model.Tags[i]))
                         };
-                     }   
-                     else
-                     {
+                    }
+                    else
+                    {
                         var tag = new Tag
                         {
                             Value = model.Tags[i].ToLower()
                         };
+                        _context.Tags.Add(tag);
+                        await _context.SaveChangesAsync();  
+
                         executortag = new ExecutorTag
                         {
                             UserID = executor.UserID,
-                            TagID = tag.Id
+                            TagID = tag.Id 
                         };
-                        _context.Tags.Add(tag);
-                     }
+                    }
                     _context.ExecutorsTag.Add(executortag);
                 }
                 await _context.SaveChangesAsync();
