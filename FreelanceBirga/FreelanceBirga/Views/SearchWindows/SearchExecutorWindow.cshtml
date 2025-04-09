@@ -1,0 +1,43 @@
+﻿@using FreelanceBirga.Models.VM
+
+@model List<TagViewModel>
+
+<div style="display: flex; gap: 20px;">
+    <div style="flex: 0 0 40%;">
+        <input type="text" id="searchInput" placeholder="Введите название тега..." oninput="filterTags()" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;" />
+
+        <form asp-controller="SearchWindows" asp-action="ProcessSelectedTags" method="post" id="tagsForm">
+            <div id="tagsContainer" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                @foreach (var tag in Model)
+                {
+                        <div class="tag-item" style="flex: 1 1 calc(50% - 10px);">
+                            <input type="checkbox" name="selectedTags" value="@tag.Id" />
+                            <label>@tag.Name</label>
+                        </div>
+                }
+            </div>
+            <button type="submit" style="margin-top: 10px; padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">Применить</button>
+        </form>
+    </div>
+
+    <div style="flex: 0 0 60%; border-left: 1px solid #ccc; padding-left: 20px;">
+        <h3>Исполнители</h3>
+        <p>Здесь будет список исполнителей (заглушка).</p>
+    </div>
+</div>
+
+<script>
+    function filterTags() {
+        const searchInput = document.getElementById("searchInput").value.toLowerCase();
+        const tagItems = document.querySelectorAll(".tag-item");
+
+        tagItems.forEach(tagItem => {
+            const label = tagItem.querySelector("label").textContent.toLowerCase();
+            if (label.includes(searchInput)) {
+                tagItem.style.display = "flex";
+            } else {
+                tagItem.style.display = "none";
+            }
+        });
+    }
+</script>

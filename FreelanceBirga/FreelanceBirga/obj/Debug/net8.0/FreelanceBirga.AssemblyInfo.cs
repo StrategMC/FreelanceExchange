@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FreelanceBirga")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f42e6ce162b4042cb11d3f66fa2e26b8b97247e6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2a11045a3b1cd2b333726137b90da314574d81e")]
 [assembly: System.Reflection.AssemblyProductAttribute("FreelanceBirga")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FreelanceBirga")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

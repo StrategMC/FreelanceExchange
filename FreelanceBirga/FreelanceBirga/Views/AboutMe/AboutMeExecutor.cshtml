@@ -154,39 +154,33 @@
                 renderTags();
             });
 
-            $('#saveTagsBtn').click(function() {
-                $.ajax({
-                    url: '@Url.Action("UpdateExecutorTags", "Executor")',
-                    type: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify({ 
-                        tags: currentTags 
-                    }),
-                    success: function(response) {
-                        if (response.success) {
-                            originalTags = [...currentTags];
-                            $('#tagsViewMode .tags-container').html(
-                                currentTags.map(tag => `<span class="tag">${tag}</span>`).join('')
-                            );
-                            $('#tagsEditMode').hide();
-                            $('#tagsViewMode').show();
-                            $('#manageTagsBtn').show();
+            $('#saveTagsBtn').click(function() { $.ajax({
+            url: '@Url.Action("UpdateExecutorTags", "AboutMe")',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(currentTags), 
+            success: function(response) {
+            console.log('Теги успешно отправлены на сервер');
+            originalTags = [...currentTags];
+            $('#tagsViewMode .tags-container').html(
+                currentTags.map(tag => `<span class="tag">${tag}</span>`).join('')
+            );
+            $('#tagsEditMode').hide();
+            $('#tagsViewMode').show();
+            $('#manageTagsBtn').show();
 
-                            if (currentTags.length === 0) {
-                                $('#tagsViewMode').html('<p>Теги не указаны</p>');
-                            }
-                        } else {
-                            alert('Ошибка при сохранении тегов: ' + response.message);
-                        }
-                    },
-                    error: function() {
-                        alert('Произошла ошибка при сохранении тегов');
-                    }
-                });
-            });
+            if (currentTags.length === 0) {
+                $('#tagsViewMode').html('<p>Теги не указаны</p>');
+            }
+        },
+        error: function() {
+            alert('Произошла ошибка при сохранении тегов');
+        }
+    });
+});
 
             function addTag() {
-                const newTag = $('#newTagInput').val().trim();
+                const newTag = $('#newTagInput').val().trim().toLowerCase();
                 if (newTag && !currentTags.includes(newTag)) {
                     currentTags.push(newTag);
                     renderTags();

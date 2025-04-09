@@ -26,7 +26,7 @@ namespace FreelanceBirga.Controllers
             }
             return View();
         }
-        [HttpGet]
+       [HttpGet]
         public IActionResult Customer()
         {
             var userId = HttpContext.Session.GetInt32("UserId");
@@ -35,7 +35,7 @@ namespace FreelanceBirga.Controllers
                 return RedirectToAction("Autorization", "Account");
             }
             return View();
-        }
+        } 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Customer(CustomerViewModel model)
