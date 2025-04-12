@@ -115,12 +115,10 @@
 <body>
     <div class="container mt-5">
         <div class="profile-container">
-            <!-- Никнейм сверху -->
             <div class="username-section">
                 @Model.Username
             </div>
 
-            <!-- Основной контент: слева описание, справа теги -->
             <div class="main-content">
                 <div class="description-section">
                     <h4>Описание</h4>
@@ -129,21 +127,20 @@
 
                 <div class="tags-section">
                     <h4>Теги</h4>
-                    <button id="manageTagsBtn" class="btn btn-primary manage-tags-btn">Управление тегами</button>
 
                     <div id="tagsViewMode">
                         @if (Model.Tags != null && Model.Tags.Any())
                         {
-                                <div class="tags-container">
+                                    <div class="tags-container">
                                 @foreach (var tag in Model.Tags)
                                 {
-                                            <span class="tag">@tag</span>
+                                                    <span class="tag">@tag</span>
                                 }
-                                </div>
+                                    </div>
                         }
                         else
                         {
-                                <p>Теги не указаны</p>
+                                    <p>Теги не указаны</p>
                         }
                     </div>
 
@@ -153,10 +150,10 @@
                             {
                                 @foreach (var tag in Model.Tags)
                                 {
-                                            <span class="tag">
+                                                    <span class="tag">
                                         @tag
-                                                <span class="tag-remove" data-tag="@tag">×</span>
-                                            </span>
+                                                        <span class="tag-remove" data-tag="@tag">×</span>
+                                                    </span>
                                 }
                             }
                         </div>
@@ -172,7 +169,6 @@
                 </div>
             </div>
 
-            <!-- Вторичный контент: слева рейтинг, справа отзывы -->
             <div class="secondary-content">
                 <div class="rating-section">
                     <h4>Рейтинг</h4>
@@ -182,15 +178,15 @@
                         {
                             if (i <= Model.Rating)
                             {
-                                        <span>★</span>
+                                                <span>★</span>
                             }
                             else if (i - 0.5 <= Model.Rating)
                             {
-                                        <span>½</span>
+                                                <span>½</span>
                             }
                             else
                             {
-                                        <span>☆</span>
+                                                <span>☆</span>
                             }
                         }
                     </div>
@@ -207,88 +203,6 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            var originalTags = @Html.Raw(Json.Serialize(Model.Tags ?? new List<string>()));
-            var currentTags = [...originalTags];
-
-            $('#manageTagsBtn').click(function() {
-                $('#tagsViewMode').hide();
-                $('#tagsEditMode').show();
-                $(this).hide();
-            });
-
-            $('#cancelTagsBtn').click(function() {
-                currentTags = [...originalTags];
-                renderTags();
-                $('#tagsEditMode').hide();
-                $('#tagsViewMode').show();
-                $('#manageTagsBtn').show();
-            });
-
-            $('#addTagBtn').click(function() {
-                addTag();
-            });
-
-            $('#newTagInput').keypress(function(e) {
-                if (e.which == 13) {
-                    addTag();
-                }
-            });
-
-            $(document).on('click', '.tag-remove', function() {
-                const tagToRemove = $(this).data('tag');
-                currentTags = currentTags.filter(tag => tag !== tagToRemove);
-                renderTags();
-            });
-
-            $('#saveTagsBtn').click(function() {
-                $.ajax({
-                    url: '@Url.Action("UpdateExecutorTags", "AboutMe")',
-                    type: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify(currentTags),
-                    success: function(response) {
-                        console.log('Теги успешно отправлены на сервер');
-                        originalTags = [...currentTags];
-                        $('#tagsViewMode .tags-container').html(
-                            currentTags.map(tag => `<span class="tag">${tag}</span>`).join('')
-                        );
-                        $('#tagsEditMode').hide();
-                        $('#tagsViewMode').show();
-                        $('#manageTagsBtn').show();
-
-                        if (currentTags.length === 0) {
-                            $('#tagsViewMode').html('<p>Теги не указаны</p>');
-                        }
-                    },
-                    error: function() {
-                        alert('Произошла ошибка при сохранении тегов');
-                    }
-                });
-            });
-
-            function addTag() {
-                const newTag = $('#newTagInput').val().trim().toLowerCase();
-                if (newTag && !currentTags.includes(newTag)) {
-                    currentTags.push(newTag);
-                    renderTags();
-                    $('#newTagInput').val('');
-                }
-            }
-
-            function renderTags() {
-                $('#tagsContainer').html(
-                    currentTags.map(tag => `
-                        <span class="tag">
-                            ${tag}
-                            <span class="tag-remove" data-tag="${tag}">×</span>
-                        </span>
-                    `).join('')
-                );
-            }
-        });
-    </script>
+    
 </body>
 </html>

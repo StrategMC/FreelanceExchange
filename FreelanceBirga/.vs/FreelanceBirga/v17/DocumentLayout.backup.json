@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|d:\\frelance\\freelanceexchange\\freelancebirga\\freelancebirga\\controllers\\aboutmecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|solutionrelative:freelancebirga\\controllers\\aboutmecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|d:\\frelance\\freelanceexchange\\freelancebirga\\freelancebirga\\views\\aboutme\\aboutmeexecutor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|solutionrelative:freelancebirga\\views\\aboutme\\aboutmeexecutor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|d:\\frelance\\freelanceexchange\\freelancebirga\\freelancebirga\\controllers\\searchwindowscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|solutionrelative:freelancebirga\\controllers\\searchwindowscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|d:\\frelance\\freelanceexchange\\freelancebirga\\freelancebirga\\views\\searchwindows\\searchexecutorwindow.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|solutionrelative:freelancebirga\\views\\searchwindows\\searchexecutorwindow.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|d:\\frelance\\freelanceexchange\\freelancebirga\\freelancebirga\\controllers\\searchwindowscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|solutionrelative:freelancebirga\\controllers\\searchwindowscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|d:\\frelance\\freelanceexchange\\freelancebirga\\freelancebirga\\controllers\\aboutmecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|solutionrelative:freelancebirga\\controllers\\aboutmecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|d:\\frelance\\freelanceexchange\\freelancebirga\\freelancebirga\\views\\aboutme\\aboutmeexecutor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|solutionrelative:freelancebirga\\views\\aboutme\\aboutmeexecutor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|d:\\frelance\\freelanceexchange\\freelancebirga\\freelancebirga\\models\\vm\\tagviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -155,17 +155,17 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "SearchWindowsController.cs",
               "DocumentMoniker": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Controllers\\SearchWindowsController.cs",
               "RelativeDocumentMoniker": "FreelanceBirga\\Controllers\\SearchWindowsController.cs",
               "ToolTip": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Controllers\\SearchWindowsController.cs",
               "RelativeToolTip": "FreelanceBirga\\Controllers\\SearchWindowsController.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAYwAgAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAYwC0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-09T12:15:28.099Z",
               "IsPinned": true,
@@ -173,13 +173,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "SearchExecutorWindow.cshtml",
               "DocumentMoniker": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Views\\SearchWindows\\SearchExecutorWindow.cshtml",
               "RelativeDocumentMoniker": "FreelanceBirga\\Views\\SearchWindows\\SearchExecutorWindow.cshtml",
               "ToolTip": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Views\\SearchWindows\\SearchExecutorWindow.cshtml",
               "RelativeToolTip": "FreelanceBirga\\Views\\SearchWindows\\SearchExecutorWindow.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-09T12:11:45.816Z",
               "IsPinned": true,
@@ -195,12 +195,11 @@
               "RelativeToolTip": "FreelanceBirga\\Models\\VM\\TagViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T13:26:59.495Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T13:26:59.495Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "AboutMeController.cs",
               "DocumentMoniker": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Controllers\\AboutMeController.cs",
               "RelativeDocumentMoniker": "FreelanceBirga\\Controllers\\AboutMeController.cs",
@@ -208,8 +207,7 @@
               "RelativeToolTip": "FreelanceBirga\\Controllers\\AboutMeController.cs",
               "ViewState": "AgIAAFkAAAAAAAAAAAAgwGAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T12:00:57.562Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-04T12:00:57.562Z"
             },
             {
               "$type": "Document",
@@ -221,12 +219,11 @@
               "RelativeToolTip": "FreelanceBirga\\Views\\Account\\Autorization.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-24T11:53:34.634Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-24T11:53:34.634Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "AboutMeExecutor.cshtml",
               "DocumentMoniker": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Views\\AboutMe\\AboutMeExecutor.cshtml",
               "RelativeDocumentMoniker": "FreelanceBirga\\Views\\AboutMe\\AboutMeExecutor.cshtml",
@@ -234,8 +231,7 @@
               "RelativeToolTip": "FreelanceBirga\\Views\\AboutMe\\AboutMeExecutor.cshtml",
               "ViewState": "AgIAALcAAAAAAAAAAAAAAMkAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-04T15:25:14.12Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-04T15:25:14.12Z"
             },
             {
               "$type": "Document",
@@ -247,8 +243,7 @@
               "RelativeToolTip": "FreelanceBirga\\Models\\VM\\ExecutorViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T13:33:22.59Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T13:33:22.59Z"
             },
             {
               "$type": "Document",
@@ -260,8 +255,7 @@
               "RelativeToolTip": "FreelanceBirga\\Controllers\\AccountController.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T12:18:49.185Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T12:18:49.185Z"
             },
             {
               "$type": "Document",
@@ -273,8 +267,7 @@
               "RelativeToolTip": "FreelanceBirga\\Controllers\\AddRoleController.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAqwCQAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T12:01:50.346Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-04T12:01:50.346Z"
             },
             {
               "$type": "Document",
@@ -286,8 +279,7 @@
               "RelativeToolTip": "FreelanceBirga\\Views\\MainPages\\MainPage.cshtml",
               "ViewState": "AgIAAAwAAAAAAAAAAAAQwCcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-28T11:51:25.866Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-28T11:51:25.866Z"
             },
             {
               "$type": "Document",
@@ -299,28 +291,25 @@
               "RelativeToolTip": "FreelanceBirga\\Controllers\\HomeController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T12:10:42.451Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-21T12:10:42.451Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "dbo.ExecutorsTag [\u0414\u0430\u043D\u043D\u044B\u0435]",
+              "Title": "dbo.ExecutorsTag.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/BirgaDB/True/SqlTable/dbo.ExecutorsTag.sql",
-              "ToolTip": "dbo.ExecutorsTag [\u0414\u0430\u043D\u043D\u044B\u0435]",
+              "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/BirgaDB/True/SqlTable/dbo.ExecutorsTag.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-04-09T12:01:13.955Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T12:01:13.955Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "dbo.Tags [\u0414\u0430\u043D\u043D\u044B\u0435]",
+              "Title": "dbo.Tags.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/BirgaDB/True/SqlTable/dbo.Tags.sql",
-              "ToolTip": "dbo.Tags [\u0414\u0430\u043D\u043D\u044B\u0435]",
+              "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/BirgaDB/True/SqlTable/dbo.Tags.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-04-09T12:03:22.468Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T12:03:22.468Z"
             },
             {
               "$type": "Document",
@@ -332,8 +321,7 @@
               "RelativeToolTip": "FreelanceBirga\\Views\\AboutMe\\AboutMeCustomer.cshtml",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-04T11:58:49.802Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-04T11:58:49.802Z"
             },
             {
               "$type": "Document",

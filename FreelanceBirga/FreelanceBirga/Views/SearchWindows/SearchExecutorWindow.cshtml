@@ -1,43 +1,379 @@
 ﻿@using FreelanceBirga.Models.VM
+@model SearchViewModel
 
-@model List<TagViewModel>
+@{
+    ViewData["Title"] = "Поиск исполнителей";
+}
 
-<div style="display: flex; gap: 20px;">
-    <div style="flex: 0 0 40%;">
-        <input type="text" id="searchInput" placeholder="Введите название тега..." oninput="filterTags()" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;" />
+<div class="search-container">
+    <!-- Левая колонка - фильтры -->
+    <div class="filters-column">
+        <h3 class="filters-title">Фильтры</h3>
+
+        <div class="search-input-container">
+            <input type="text" id="searchInput" placeholder="Поиск тегов..." 
+                   class="search-input" oninput="filterTags()" />
+        </div>
 
         <form asp-controller="SearchWindows" asp-action="ProcessSelectedTags" method="post" id="tagsForm">
-            <div id="tagsContainer" style="display: flex; flex-wrap: wrap; gap: 10px;">
-                @foreach (var tag in Model)
+            <div id="tagsContainer" class="tags-container">
+                @foreach (var tag in Model.AllTags)
                 {
-                        <div class="tag-item" style="flex: 1 1 calc(50% - 10px);">
-                            <input type="checkbox" name="selectedTags" value="@tag.Id" />
-                            <label>@tag.Name</label>
+                        <div class="tag-item">
+                            <input type="checkbox" name="selectedTags" value="@tag.Id" 
+                                   id="tag_@tag.Id"
+                        @(Model.SelectedTagIds?.Contains(tag.Id) == true ? "checked" : "") />
+                            <label for="tag_@tag.Id" class="tag-label">@tag.Name</label>
                         </div>
                 }
             </div>
-            <button type="submit" style="margin-top: 10px; padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">Применить</button>
+
+            <div class="filter-buttons">
+                <button type="submit" class="btn btn-primary">Применить фильтры</button>
+                <button type="button" onclick="resetFilters()" class="btn btn-secondary">Сбросить</button>
+            </div>
         </form>
     </div>
 
-    <div style="flex: 0 0 60%; border-left: 1px solid #ccc; padding-left: 20px;">
-        <h3>Исполнители</h3>
-        <p>Здесь будет список исполнителей (заглушка).</p>
+    <!-- Правая колонка - результаты -->
+    <div class="results-column">
+        <h3 class="results-title">Найдено исполнителей: @Model.FilteredExecutors.Count</h3>
+
+        @if (!Model.FilteredExecutors.Any())
+        {
+                <div class="no-results">
+                    <p class="no-results-text">
+                        По вашим критериям не найдено ни одного исполнителя.
+                        <br />Попробуйте изменить параметры поиска.
+                    </p>
+                </div>
+        }
+        else
+        {
+                <div id="executorsList" class="executors-grid">
+                @foreach (var executor in Model.FilteredExecutors)
+                {
+                            <div class="executor-card">
+                                <div class="executor-header">
+                                    <div class="avatar-placeholder">
+                                        <span class="avatar-letter">@executor.Username[0]</span>
+                                    </div>
+                                    <div class="executor-info">
+                                        <h4 class="executor-name">@executor.Username</h4>
+                                        <div class="rating-container">
+                                            <span class="stars">
+                                        @for (int i = 0; i < 5; i++)
+                                        {
+                                                        <span class="@(i < executor.Rating ? "star-filled" : "star-empty")">★</span>
+                                        }
+                                            </span>
+                                            <span class="rating-count">(@executor.ColRating)</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="executor-description">
+                            @(executor.Description.Length > 150 ?
+                                    executor.Description.Substring(0, 150) + "..." :
+                                    executor.Description)
+                                </p>
+
+                        @if (executor.Tags.Any())
+                        {
+                                        <div class="executor-tags">
+                                @foreach (var tag in executor.Tags.Take(5))
+                                {
+                                                    <span class="tag-badge">@tag</span>
+                                }
+                                @if (executor.Tags.Count > 5)
+                                {
+                                                    <span class="tag-badge">+@(executor.Tags.Count - 5)</span>
+                                }
+                                        </div>
+                        }
+
+                                <div class="executor-actions">
+                                                   <a asp-controller="Profile" asp-action="ExecutorProfile"  asp-route-id="@executor.UserId" class="btn btn-outline">
+                                    Профиль </a>
+                                    <button class="btn btn-primary">Нанять</button>
+                                </div>
+                            </div>
+                }
+                </div>
+        }
     </div>
 </div>
 
-<script>
-    function filterTags() {
-        const searchInput = document.getElementById("searchInput").value.toLowerCase();
-        const tagItems = document.querySelectorAll(".tag-item");
-
-        tagItems.forEach(tagItem => {
-            const label = tagItem.querySelector("label").textContent.toLowerCase();
-            if (label.includes(searchInput)) {
-                tagItem.style.display = "flex";
-            } else {
-                tagItem.style.display = "none";
+        <style>
+            /* Основные стили контейнера */
+            .search-container {
+                display: flex;
+                gap: 20px;
+                min-height: 80vh;
             }
-        });
-    }
-</script>
+
+            /* Стили для колонки фильтров */
+            .filters-column {
+                flex: 0 0 30%;
+                background: #f8f9fa;
+                padding: 20px;
+                border-radius: 8px;
+            }
+
+            .filters-title {
+                margin-bottom: 20px;
+            }
+
+            .search-input-container {
+                margin-bottom: 20px;
+            }
+
+            .search-input {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+
+            .tags-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+
+            .tag-item {
+                flex: 1 1 calc(50% - 10px);
+                padding: 5px;
+                border-radius: 4px;
+                transition: background 0.2s;
+            }
+
+            .tag-item:hover {
+                background: #e9ecef;
+            }
+
+            .tag-label {
+                cursor: pointer;
+            }
+
+            .filter-buttons {
+                display: flex;
+                gap: 10px;
+            }
+
+            /* Стили для колонки результатов */
+            .results-column {
+                flex: 1;
+                padding: 0 20px;
+            }
+
+            .results-title {
+                margin-bottom: 20px;
+            }
+
+            .no-results {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 40px;
+                text-align: center;
+            }
+
+            .no-results-text {
+                margin-top: 15px;
+                font-size: 1.1em;
+                color: #666;
+            }
+
+            .executors-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 20px;
+            }
+
+            /* Стили карточки исполнителя */
+            .executor-card {
+                background: white;
+                border: 1px solid #e0e0e0;
+                border-radius: 8px;
+                padding: 20px;
+                transition: transform 0.3s, box-shadow 0.3s;
+            }
+
+            .executor-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+            .executor-header {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                margin-bottom: 15px;
+            }
+
+            .avatar-placeholder {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background: #eee;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .avatar-letter {
+                font-size: 1.2em;
+            }
+
+            .executor-name {
+                margin: 0;
+            }
+
+            .rating-container {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                margin-top: 3px;
+            }
+
+            .stars {
+                color: #ffc107;
+            }
+
+            .star-filled {
+                color: #ffc107;
+            }
+
+            .star-empty {
+                color: #e0e0e0;
+            }
+
+            .rating-count {
+                font-size: 0.8em;
+                color: #666;
+            }
+
+            .executor-description {
+                color: #555;
+                margin-bottom: 15px;
+            }
+
+            .executor-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 5px;
+                margin-bottom: 15px;
+            }
+
+            .tag-badge {
+                background: #e9ecef;
+                color: #495057;
+                padding: 3px 10px;
+                border-radius: 20px;
+                font-size: 0.8em;
+            }
+
+            .executor-actions {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            /* Общие стили кнопок */
+            .btn {
+                padding: 8px 16px;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: all 0.3s;
+                text-decoration: none;
+                border: none;
+            }
+
+            .btn-primary {
+                background-color: #007bff;
+                color: white;
+            }
+
+            .btn-primary:hover {
+                background-color: #0069d9;
+            }
+
+            .btn-secondary {
+                background-color: #6c757d;
+                color: white;
+            }
+
+            .btn-secondary:hover {
+                background-color: #5a6268;
+            }
+
+            .btn-outline {
+                background: transparent;
+                border: 1px solid #007bff;
+                color: #007bff;
+                padding: 7px 15px;
+            }
+
+            .btn-outline:hover {
+                background: #007bff;
+                color: white;
+            }
+        </style>
+
+
+@section Scripts {
+        <script>
+            function filterTags() {
+                const searchInput = document.getElementById("searchInput").value.toLowerCase();
+                const tagItems = document.querySelectorAll(".tag-item");
+
+                tagItems.forEach(tagItem => {
+                    const label = tagItem.querySelector("label").textContent.toLowerCase();
+                    tagItem.style.display = label.includes(searchInput) ? "block" : "none";
+                });
+            }
+
+            function resetFilters() {
+                // Сбрасываем чекбоксы
+                document.querySelectorAll("input[type='checkbox']").forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+
+                // Сбрасываем поиск
+                document.getElementById("searchInput").value = "";
+                filterTags();
+
+                // Отправляем форму
+                document.getElementById("tagsForm").submit();
+            }
+
+            // AJAX отправка формы (опционально)
+            document.getElementById("tagsForm").addEventListener("submit", function(e) {
+                e.preventDefault();
+
+                const formData = new FormData(this);
+
+                fetch(this.action, {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        "X-Requested-With": "XMLHttpRequest"
+                    }
+                })
+                .then(response => response.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, "text/html");
+                    document.getElementById("executorsList").innerHTML = 
+                        doc.getElementById("executorsList").innerHTML;
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    this.submit(); // Fallback
+                });
+            });
+        </script>
+}
