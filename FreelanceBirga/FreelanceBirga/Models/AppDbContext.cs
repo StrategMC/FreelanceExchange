@@ -11,4 +11,5 @@ public class AppDbContext : DbContext
     public DbSet<Customer> Customers { get; set; }
     public DbSet<Tag> Tags { get; set; }
     public DbSet<ExecutorTag> ExecutorsTag { get; set; }
+    public DbSet<TempOrder> TempOrders { get; set; }
 }

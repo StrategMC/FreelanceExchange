@@ -1,0 +1,74 @@
+﻿@using FreelanceBirga.Models.VM
+@model OrderViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создать новый заказ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .form-container {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .input-group-addon {
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+            padding: 6px 12px;
+        }
+        .btn-moderate {
+            background-color: #0d6efd;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2 class="mb-4">Создать новый заказ</h2>
+
+
+        @using (Html.BeginForm("AddOrdersToTempOrders", "Orders", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="mb-3">
+                @Html.LabelFor(model => model.Title, "Заголовок", new { @class = "form-label" })
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", maxlength = "20", placeholder = "Введите заголовок (до 20 символов)" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                @Html.LabelFor(model => model.Description, "Описание", new { @class = "form-label" })
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "4", placeholder = "Подробное описание заказа" })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                @Html.LabelFor(model => model.Price, "Цена", new { @class = "form-label" })
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", type = "number", step = "1", min = "0", placeholder = "0" } })
+                    </div>
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="d-flex justify-content-end mt-4">
+                    <button type="submit" class="btn btn-moderate">
+                        Отправить на модерацию
+                    </button>
+                </div>
+        }
+    </div>
+</body>
+</html>
