@@ -7,7 +7,7 @@ namespace FreelanceBirga.Controllers
     public class SearchWindowsController : Controller
     {
         private readonly AppDbContext _context;
-
+        int? userId;
         public SearchWindowsController(AppDbContext context)
         {
             _context = context;
@@ -16,6 +16,11 @@ namespace FreelanceBirga.Controllers
         [HttpGet]
         public IActionResult SearchExecutorWindow()
         {
+            userId = HttpContext.Session.GetInt32("UserId");
+            if (!userId.HasValue)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var model = new SearchViewModel
             {
                 AllTags = _context.Tags

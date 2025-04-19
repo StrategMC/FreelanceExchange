@@ -22,7 +22,7 @@ namespace FreelanceBirga.Controllers
             var userId = HttpContext.Session.GetInt32("UserId");
             if (!userId.HasValue)
             {
-                return RedirectToAction("Autorization", "Account");
+                return RedirectToAction("Index", "Home");
             }
             return View();
         }
@@ -32,7 +32,7 @@ namespace FreelanceBirga.Controllers
             var userId = HttpContext.Session.GetInt32("UserId");
             if (!userId.HasValue)
             {
-                return RedirectToAction("Autorization", "Account");
+                return RedirectToAction("Index", "Home");
             }
             return View();
         } 

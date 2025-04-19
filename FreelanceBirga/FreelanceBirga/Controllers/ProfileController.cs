@@ -11,6 +11,7 @@ namespace FreelanceBirga.Controllers
     public class ProfileController : Controller
     {
         private readonly AppDbContext _context;
+        int? userId;
         public ProfileController(AppDbContext context)
         {
             _context = context;
@@ -18,6 +19,11 @@ namespace FreelanceBirga.Controllers
         [HttpGet]
         public IActionResult ExecutorProfile(int id)
         {
+            userId = HttpContext.Session.GetInt32("UserId");
+            if (!userId.HasValue)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var executorWithTags = _context.Executors
                 .Where(e => e.UserID == id)
                 .Select(e => new

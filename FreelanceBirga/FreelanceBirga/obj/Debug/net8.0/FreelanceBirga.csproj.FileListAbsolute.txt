@@ -337,3 +337,8 @@ D:\FRELANCE\FreelanceExchange\FreelanceBirga\FreelanceBirga\obj\Debug\net8.0\ref
 D:\FRELANCE\FreelanceExchange\FreelanceBirga\FreelanceBirga\obj\Debug\net8.0\FreelanceBirga.pdb
 D:\FRELANCE\FreelanceExchange\FreelanceBirga\FreelanceBirga\obj\Debug\net8.0\FreelanceBirga.genruntimeconfig.cache
 D:\FRELANCE\FreelanceExchange\FreelanceBirga\FreelanceBirga\obj\Debug\net8.0\ref\FreelanceBirga.dll
+D:\FRELANCE\FreelanceExchange\FreelanceBirga\FreelanceBirga\bin\Debug\net8.0\Microsoft.OpenApi.dll
+D:\FRELANCE\FreelanceExchange\FreelanceBirga\FreelanceBirga\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\FRELANCE\FreelanceExchange\FreelanceBirga\FreelanceBirga\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\FRELANCE\FreelanceExchange\FreelanceBirga\FreelanceBirga\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\FRELANCE\FreelanceExchange\FreelanceBirga\FreelanceBirga\obj\Debug\net8.0\FreelanceBirga.MvcApplicationPartsAssemblyInfo.cs

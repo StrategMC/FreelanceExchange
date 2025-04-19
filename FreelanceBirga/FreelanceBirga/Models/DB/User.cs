@@ -20,4 +20,5 @@ public class User
     [DataType(DataType.Password)]
     [MinLength(6, ErrorMessage = "Пароль должен содержать минимум 6 символов")]
     public string Password { get; set; }
+    public string Role { get; set; } = "User";
 }

@@ -1,7 +1,10 @@
 ﻿using FreelanceBirga.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -24,10 +27,13 @@ public class AccountController : Controller
         return View();
     }
     [HttpPost]
-    public IActionResult Logout()
+    public async Task<IActionResult> Logout()
     {
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
         HttpContext.Session.Clear();
-        return RedirectToAction("MainPage", "MainPages");
+
+        return RedirectToAction("Index", "Home");
     }
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -41,26 +47,36 @@ public class AccountController : Controller
                 return View(model);
             }
 
-            if (await _context.Users.AnyAsync(u => u.Login == model.Login))
-            {
-                ModelState.AddModelError("Login", "Этот логин уже занят");
-                return View(model);
-            }
-
             var user = new User
             {
                 Email = model.Email,
                 Login = model.Login,
-                Password = HashPassword(model.Password)
+                Password = HashPassword(model.Password),
+                Role = "User" 
             };
-          
+
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            HttpContext.Session.SetInt32("UserId", user.Id);
+            
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.Login),
+                new Claim(ClaimTypes.Role, user.Role)
+            };
 
+            var identity = new ClaimsIdentity(claims,
+                CookieAuthenticationDefaults.AuthenticationScheme);
+
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                new ClaimsPrincipal(identity));
+
+            HttpContext.Session.SetInt32("UserId", user.Id);
             return RedirectToAction("MainPage", "MainPages");
         }
+       
         return View(model);
     }
     [HttpPost]
@@ -69,20 +85,30 @@ public class AccountController : Controller
     {
         if (ModelState.IsValid)
         {
-            var user = await _context.Users
-                .FirstOrDefaultAsync(u => u.Login == model.Login && u.Password == HashPassword(model.Password));
+            var hashedPassword = HashPassword(model.Password);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Login == model.Login && u.Password == hashedPassword);
 
             if (user != null)
             {
-                HttpContext.Session.SetString("UserId", user.Id.ToString());
-                HttpContext.Session.SetString("UserLogin", user.Login);
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new Claim(ClaimTypes.Name, user.Login),
+                    new Claim(ClaimTypes.Role, user.Role)
+                };
+
+                var identity = new ClaimsIdentity(claims,
+                    CookieAuthenticationDefaults.AuthenticationScheme);
+
+                await HttpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(identity));
+
                 HttpContext.Session.SetInt32("UserId", user.Id);
                 return RedirectToAction("MainPage", "MainPages");
             }
-            else
-            {
-                ModelState.AddModelError("Password", "Логин или пароль не верны");
-            }
+
+            ModelState.AddModelError("Password", "Логин или пароль не верны");
         }
         return View(model);
     }

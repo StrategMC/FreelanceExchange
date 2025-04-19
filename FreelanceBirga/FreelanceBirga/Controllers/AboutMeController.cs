@@ -101,7 +101,7 @@ namespace FreelanceBirga.Controllers
             userId = HttpContext.Session.GetInt32("UserId");
             if (!userId.HasValue)
             {
-                return RedirectToAction("Autorization", "Account");
+                return RedirectToAction("Index", "Home");
             }
             
             var customer = await _context.Customers
@@ -121,7 +121,7 @@ namespace FreelanceBirga.Controllers
             userId = HttpContext.Session.GetInt32("UserId");
             if (!userId.HasValue)
             {
-                return RedirectToAction("Autorization", "Account");
+                return RedirectToAction("Index", "Home");
             }
 
             var executor = await _context.Executors

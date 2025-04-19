@@ -11,10 +11,14 @@
         .nav-user-section {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
         .logout-form {
             margin: 0;
+        }
+        .admin-panel-link {
+            color: #dc3545 !important;
+            font-weight: 500;
         }
     </style>
 </head>
@@ -28,27 +32,29 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav me-auto">
-                        <!-- Основные пункты меню можно добавить здесь -->
+                        <!-- Основные пункты меню -->
                     </ul>
 
                     <ul class="navbar-nav">
-                        @{
-                            var userId = Context.Session.GetInt32("UserId");
-                        }
-
-                        @if (userId != null)
+                        @if (User.Identity.IsAuthenticated)
                         {
                                 <li class="nav-item nav-user-section">
-                                   @*  <span class="nav-link text-dark">@username</span> *@
-                                    <form class="logout-form" asp-controller="Account" asp-action="Logout" method="post">
+                                    <span class="nav-link text-dark">@User.Identity.Name</span>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                     <li class="nav-item">
+                                             <a class="nav-link text-dark" asp-controller="Admin" asp-action="OrderModeration" >Модерация заказов</a>
+                                    </li>
+                                }
+                                <form class="logout-form" asp-controller="Account" asp-action="Logout" method="post">
                                         <button type="submit" class="btn btn-outline-danger btn-sm">Выйти</button>
-                                    </form>
+                                </form>
                                 </li>
                         }
                         else
                         {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-controller="Account" asp-action="Autorization">Войти</a>
+                                        <a class="nav-link text-dark" asp-controller="Account" asp-action="Autorization">Войти</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-controller="Account" asp-action="Registration">Регистрация</a>

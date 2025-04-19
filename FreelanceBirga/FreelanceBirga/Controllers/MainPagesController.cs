@@ -1,7 +1,5 @@
-﻿using FreelanceBirga.Controllers;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace FreelanceBirga.Controllers
 {
@@ -34,7 +32,7 @@ namespace FreelanceBirga.Controllers
             var userId = HttpContext.Session.GetInt32("UserId");
             if (!userId.HasValue)
             {
-                return RedirectToAction("Autorization", "Account");
+                return RedirectToAction("Index", "Home");
             }
             User user = GetCurrentUser();
             ViewBag.CustomerRole = false;
