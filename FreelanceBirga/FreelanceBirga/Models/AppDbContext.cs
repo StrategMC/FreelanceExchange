@@ -1,4 +1,5 @@
-﻿using FreelanceBirga.Models;
+﻿using FreelanceBirga.Controllers;
+using FreelanceBirga.Models;
 using FreelanceBirga.Models.DB;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,4 +13,5 @@ public class AppDbContext : DbContext
     public DbSet<Tag> Tags { get; set; }
     public DbSet<ExecutorTag> ExecutorsTag { get; set; }
     public DbSet<TempOrder> TempOrders { get; set; }
+    public DbSet<Order> Orders { get; set; }
 }

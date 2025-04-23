@@ -1,0 +1,107 @@
+﻿@model FreelanceBirga.Models.VM.SearchOrdersViewModel
+
+@{
+    ViewData["Title"] = "Поиск заказов";
+}
+
+<div class="container">
+    <h1 class="mb-4">Поиск заказов</h1>
+
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            <form asp-action="SearchOrders" method="get" class="search-form">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label asp-for="SearchWord" class="form-label">Ключевые слова</label>
+                            <input asp-for="SearchWord" class="form-control" placeholder="Введите название заказа...">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-check mt-4 pt-2">
+                            <input asp-for="InDescription" class="form-check-input">
+                            <label asp-for="InDescription" class="form-check-label">Искать в описаниях</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="MinPrice" class="form-label">Минимальная цена</label>
+                            <input asp-for="MinPrice" type="number" class="form-control" placeholder="От">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group mt-4">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Найти
+                    </button>
+                    <a href="/Orders/SearchOrders" class="btn btn-outline-secondary ms-2">Сбросить</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+    @if (Model.FilteredOrders != null)
+    {
+        if (Model.FilteredOrders.Any())
+        {
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Найдено заказов: @Model.FilteredOrders.Count</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Название</th>
+                                            <th>Описание</th>
+                                            <th>Цена</th>
+                                            <th>Статус</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                @foreach (var order in Model.FilteredOrders)
+                                {
+                                                <tr>
+                                                    <td>@order.Title</td>
+                                                    <td class="text-truncate" style="max-width: 300px;">@order.Description</td>
+                                                    <td>@order.Price ₽</td>
+                                                    <td>
+                                            @if (order.InWork)
+                                            {
+                                                                <span class="badge bg-warning text-dark">В работе</span>
+                                            }
+                                            else
+                                            {
+                                                                <span class="badge bg-success">Доступен</span>
+                                            }
+                                                    </td>
+                                                    <td class="text-end">
+                                                        <a asp-controller="Orders" asp-action="Details" asp-route-id="@order.Id" 
+                                                           class="btn btn-sm btn-outline-primary">
+                                                            Подробнее
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+        }
+        else
+        {
+                    <div class="alert alert-info mt-4">
+                        <i class="fas fa-info-circle me-2"></i> По вашему запросу ничего не найдено. Попробуйте изменить критерии поиска.
+                    </div>
+        }
+    }
+</div>

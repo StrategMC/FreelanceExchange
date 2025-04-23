@@ -15,6 +15,45 @@ namespace FreelanceBirga.Controllers
             _context = context;
         }
         [HttpGet]
+        public async Task<IActionResult> SearchOrders(SearchOrdersViewModel searchOrdersViewModel)
+        {
+            //polsovatel proverka
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (!userId.HasValue)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            var executor = await _context.Executors.FirstOrDefaultAsync(c => c.UserID == userId.Value);
+
+            if (executor == null)
+            {
+                return RedirectToAction("MainPage", "MainPages");
+            }
+            //filtr zakazy
+           // var query = _context.Orders.Select(od => od);
+            var query = _context.Orders.Where(od => od.InWork == false);
+
+            if (!string.IsNullOrEmpty(searchOrdersViewModel.SearchWord))
+            {
+                if (searchOrdersViewModel.InDescription)
+                {
+                    query = query.Where(ord => EF.Functions.Like(ord.Title, $"%{searchOrdersViewModel.SearchWord}%") ||  EF.Functions.Like(ord.Description, $"%{searchOrdersViewModel.SearchWord}%"));
+                }
+                else
+                {
+                    query = query.Where(ord => EF.Functions.Like(ord.Title, $"%{searchOrdersViewModel.SearchWord}%"));
+                }
+            }
+
+            if (searchOrdersViewModel.MinPrice > 0)
+            {
+                query = query.Where(ord => ord.Price >= searchOrdersViewModel.MinPrice);
+            }
+
+            searchOrdersViewModel.FilteredOrders = await query.ToListAsync();
+            return View(searchOrdersViewModel);
+        }
+        [HttpGet]
         public async Task<IActionResult> AddOrders()
         {
             userId = HttpContext.Session.GetInt32("UserId");
@@ -37,6 +76,11 @@ namespace FreelanceBirga.Controllers
 
         public async Task<IActionResult> AddOrdersToTempOrders(OrderViewModel orderViewModel)
         {
+            userId = HttpContext.Session.GetInt32("UserId");
+            if (!userId.HasValue)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (!ModelState.IsValid)
             {
                 return RedirectToAction("AddOrders", "Orders");
