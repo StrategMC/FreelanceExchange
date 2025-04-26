@@ -1,4 +1,4 @@
-﻿@model FreelanceBirga.Models.DB.Customer
+﻿@model FreelanceBirga.Models.VM.CustomerViewModel
 <!DOCTYPE html>
 <html>
 <head>
@@ -127,15 +127,15 @@
                         {
                             if (i <= ratingValue)
                             {
-                                        <span>★</span>
+                                                <span>★</span>
                             }
                             else if (i - 0.5 <= ratingValue)
                             {
-                                        <span>½</span>
+                                                <span>½</span>
                             }
                             else
                             {
-                                        <span>☆</span>
+                                                <span>☆</span>
                             }
                         }
                     </div>

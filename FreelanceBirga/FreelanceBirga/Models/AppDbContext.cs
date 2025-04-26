@@ -14,4 +14,6 @@ public class AppDbContext : DbContext
     public DbSet<ExecutorTag> ExecutorsTag { get; set; }
     public DbSet<TempOrder> TempOrders { get; set; }
     public DbSet<Order> Orders { get; set; }
+    public DbSet<OrdersChat> OrdersChat { get; set; }
+    public DbSet<Message> Messages { get; set; }
 }

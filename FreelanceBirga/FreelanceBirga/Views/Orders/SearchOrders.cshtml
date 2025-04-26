@@ -69,12 +69,12 @@
                                     <tbody>
                                 @foreach (var order in Model.FilteredOrders)
                                 {
-                                                <tr>
-                                                    <td>@order.Title</td>
+                                    <tr>
+                                        <td>@order.Title</td>
                                                     <td class="text-truncate" style="max-width: 300px;">@order.Description</td>
-                                                    <td>@order.Price ₽</td>
+                                                    <td>@order.Price $</td>
                                                     <td>
-                                            @if (order.InWork)
+                                            @if (order.InWork && !order.Redy)
                                             {
                                                                 <span class="badge bg-warning text-dark">В работе</span>
                                             }
@@ -84,10 +84,22 @@
                                             }
                                                     </td>
                                                     <td class="text-end">
-                                                        <a asp-controller="Orders" asp-action="Details" asp-route-id="@order.Id" 
-                                                           class="btn btn-sm btn-outline-primary">
-                                                            Подробнее
-                                                        </a>
+                                                        <div class="btn-group" role="group">
+                                                            <button class="btn btn-outline-primary btn-sm" 
+                                                                    data-bs-toggle="modal" 
+                                                                    data-bs-target="#messageModal"
+                                                                    data-order-id="@order.Id"
+                                                                    onclick="setOrderId(@order.Id)">
+                                                                <i class="fas fa-envelope"></i> Написать
+                                                            </button>
+
+                                                            <a asp-controller="Profile" 
+                                                               asp-action="CustomerProfile"  
+                                                               asp-route-id="@order.CustomerID" 
+                                                               class="btn btn-outline-secondary btn-sm">
+                                                                <i class="fas fa-user"></i> Профиль
+                                                            </a>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                 }

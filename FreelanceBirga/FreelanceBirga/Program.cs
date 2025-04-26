@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
+using FreelanceBirga.Hubs;
 
 
 var builder = WebApplication.CreateBuilder(args);
-
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
@@ -34,11 +34,13 @@ builder.Services.AddSession(options =>
 });
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddSignalR(); 
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -55,10 +57,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthentication();  
+app.UseAuthentication();
 app.UseAuthorization();
-app.UseSession();         
+app.UseSession();
 
+app.MapHub<ChatHub>("/chatHub"); 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

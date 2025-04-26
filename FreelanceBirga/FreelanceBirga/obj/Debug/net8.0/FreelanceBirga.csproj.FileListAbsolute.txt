@@ -342,3 +342,10 @@ D:\FRELANCE\FreelanceExchange\FreelanceBirga\FreelanceBirga\bin\Debug\net8.0\Swa
 D:\FRELANCE\FreelanceExchange\FreelanceBirga\FreelanceBirga\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\FRELANCE\FreelanceExchange\FreelanceBirga\FreelanceBirga\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\FRELANCE\FreelanceExchange\FreelanceBirga\FreelanceBirga\obj\Debug\net8.0\FreelanceBirga.MvcApplicationPartsAssemblyInfo.cs
+D:\FRELANCE\FreelanceExchange\FreelanceBirga\FreelanceBirga\bin\Debug\net8.0\Microsoft.AspNet.SignalR.Core.dll
+D:\FRELANCE\FreelanceExchange\FreelanceBirga\FreelanceBirga\bin\Debug\net8.0\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\FRELANCE\FreelanceExchange\FreelanceBirga\FreelanceBirga\bin\Debug\net8.0\Microsoft.Owin.dll
+D:\FRELANCE\FreelanceExchange\FreelanceBirga\FreelanceBirga\bin\Debug\net8.0\Microsoft.Owin.Host.SystemWeb.dll
+D:\FRELANCE\FreelanceExchange\FreelanceBirga\FreelanceBirga\bin\Debug\net8.0\Microsoft.Owin.Security.dll
+D:\FRELANCE\FreelanceExchange\FreelanceBirga\FreelanceBirga\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\FRELANCE\FreelanceExchange\FreelanceBirga\FreelanceBirga\bin\Debug\net8.0\Owin.dll

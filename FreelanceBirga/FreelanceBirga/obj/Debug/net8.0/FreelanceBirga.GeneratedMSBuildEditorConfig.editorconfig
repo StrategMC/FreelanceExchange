@@ -54,6 +54,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cT3JkZXJNb2RlcmF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/FRELANCE/FreelanceExchange/FreelanceBirga/FreelanceBirga/Views/Chats/Chat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdHNcQ2hhdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FRELANCE/FreelanceExchange/FreelanceBirga/FreelanceBirga/Views/Chats/ChatsWindow.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdHNcQ2hhdHNXaW5kb3cuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/FRELANCE/FreelanceExchange/FreelanceBirga/FreelanceBirga/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -68,6 +76,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/FRELANCE/FreelanceExchange/FreelanceBirga/FreelanceBirga/Views/Orders/SearchOrders.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXFNlYXJjaE9yZGVycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FRELANCE/FreelanceExchange/FreelanceBirga/FreelanceBirga/Views/Profile/CustomerProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxDdXN0b21lclByb2ZpbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/FRELANCE/FreelanceExchange/FreelanceBirga/FreelanceBirga/Views/Profile/ExecutorProfile.cshtml]

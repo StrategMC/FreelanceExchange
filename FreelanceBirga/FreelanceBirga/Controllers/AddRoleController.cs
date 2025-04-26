@@ -42,7 +42,7 @@ namespace FreelanceBirga.Controllers
         {
             if (await _context.Customers.AnyAsync(u => u.Username == model.Username))
             {
-                ModelState.AddModelError("Username", "Исполнитель с таким именем уже существует");
+                ModelState.AddModelError("Username", "Заказчик с таким именем уже существует");
                 return View(model);
             }
             var customer = new Customer

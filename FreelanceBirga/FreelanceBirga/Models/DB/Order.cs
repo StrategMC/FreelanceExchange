@@ -14,6 +14,6 @@ namespace FreelanceBirga.Models.DB
         public int Price { get; set; }
         public string Title { get; set; }
         public bool InWork { get; set; }
-      
+        public bool Redy { get; set; }
     }
 }

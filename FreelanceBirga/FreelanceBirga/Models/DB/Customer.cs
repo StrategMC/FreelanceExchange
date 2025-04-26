@@ -13,5 +13,7 @@ namespace FreelanceBirga.Models.DB
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Имя пользователя должно быть от 3 до 50 символов")]
         public string Username { get; set; }
         public string Description { get; set; }
+        public int Rating = 0;
+        public int ColRating = 0;
     }
 }

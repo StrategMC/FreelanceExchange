@@ -57,5 +57,24 @@ namespace FreelanceBirga.Controllers
 
             return View(model);
         }
+        [HttpGet]
+        public IActionResult CustomerProfile(int id)
+        {
+            userId = HttpContext.Session.GetInt32("UserId");
+            if (!userId.HasValue)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            var customer = _context.Customers.Where(c => c.Id == id).FirstOrDefault();
+            CustomerViewModel model = new CustomerViewModel
+            {
+                Username = customer.Username,
+                Description = customer.Description,
+                ColRating = customer.ColRating,
+                Rating = customer.Rating
+
+            };
+            return View(model);
+        }
     }
 }
