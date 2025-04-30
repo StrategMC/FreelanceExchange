@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -32,7 +34,6 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav me-auto">
-                        <!-- Основные пункты меню -->
                     </ul>
 
                     <ul class="navbar-nav">
@@ -47,9 +48,17 @@
                                         </li>
                                     }
                                     <form class="logout-form" asp-controller="Account" asp-action="Logout" method="post">
-                                               <a  href="/Chats/ChatsWindow" class="btn btn-primary">Чаты</a>
+                                       @inject FreelanceBirga.Core.Interfaces.IRoleChecker RoleChecker
+                                        @{
+                                            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                                            var hasChatAccess = await RoleChecker.UserHasChatAccessAsync(userId);
+                                        }
+                                        @if (hasChatAccess)
+                                        {
+                                                 <a  href="/Chats/ChatsWindow" class="btn btn-primary">Чаты</a>
+                                        }
                                             <button type="submit" class="btn btn-outline-danger btn-sm">Выйти</button>
-                                                  </form>
+                                    </form>
                                    
                                 </li>
                         }

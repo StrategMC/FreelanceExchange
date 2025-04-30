@@ -85,13 +85,12 @@
                                                     </td>
                                                     <td class="text-end">
                                                         <div class="btn-group" role="group">
-                                                            <button class="btn btn-outline-primary btn-sm" 
-                                                                    data-bs-toggle="modal" 
-                                                                    data-bs-target="#messageModal"
-                                                                    data-order-id="@order.Id"
-                                                                    onclick="setOrderId(@order.Id)">
+                                                            <a asp-controller="SearchWindows" 
+                                                               asp-action="OpenChat" 
+                                                               asp-route-orderId="@order.Id"
+                                                               class="btn btn-outline-primary btn-sm">
                                                                 <i class="fas fa-envelope"></i> Написать
-                                                            </button>
+                                                            </a>
 
                                                             <a asp-controller="Profile" 
                                                                asp-action="CustomerProfile"  

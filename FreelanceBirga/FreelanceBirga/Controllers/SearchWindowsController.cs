@@ -1,6 +1,8 @@
-﻿using FreelanceBirga.Models.VM;
+﻿using FreelanceBirga.Models.DB;
+using FreelanceBirga.Models.VM;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 
 namespace FreelanceBirga.Controllers
 {
@@ -31,7 +33,7 @@ namespace FreelanceBirga.Controllers
 
             return View(model);
         }
-
+        
         [HttpPost]
         public IActionResult ProcessSelectedTags([FromForm] List<int> selectedTags)
         {
@@ -92,6 +94,49 @@ namespace FreelanceBirga.Controllers
             }
 
             return executors;
+        }
+        [HttpGet]
+        public async Task<IActionResult> OpenChat(int orderId)
+        {
+            int userId = (int)HttpContext.Session.GetInt32("UserId");
+           
+            var orderQ = await _context.Orders.FindAsync(orderId);
+            Order order = new Order
+            {
+                Id = orderQ.Id,
+                CustomerID = orderQ.CustomerID,
+                //ExecutorID = orderQ.ExecutorID,
+                Description = orderQ.Description,
+                Price = orderQ.Price,
+                Title = orderQ.Title
+            };
+            //Console.WriteLine($"Id: {order.Id}\n" +
+            //    $"CustomerID: {order.CustomerID}\n" +
+            //    $"ExecutorID: {order.ExecutorID}\n" +
+            //    $"Description {order.Description}\n" +
+            //    $"Price: {order.Price}\n" +
+            //    $"Title: {order.Title}\n");
+            int executorId = await _context.Executors.Where(ex => ex.UserID == userId).Select(ex => ex.Id).FirstAsync();
+            bool orderChatQ = await _context.OrdersChat.Where(oc => oc.OrderId == order.Id && oc.ExecutorId == executorId).AnyAsync();
+            
+            if (!orderChatQ)
+            {
+                Console.WriteLine("Не найдено");
+                OrdersChat ordersChat = new OrdersChat
+                {
+                    OrderId = order.Id,
+                    CustomerId = order.CustomerID,
+                    ExecutorId = executorId,
+                    Status = 0
+                };
+                _context.OrdersChat.Add(ordersChat);
+                _context.SaveChanges();
+            }
+            else
+            {
+                Console.WriteLine("Найдено");
+            }
+            return RedirectToAction("ChatsWindow", "Chats");
         }
     }
 }

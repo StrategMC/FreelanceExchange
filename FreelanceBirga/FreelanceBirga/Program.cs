@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
 using FreelanceBirga.Hubs;
+using FreelanceBirga.Core.Interfaces;
+using FreelanceBirga.Core.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -38,6 +40,8 @@ builder.Services.AddSignalR();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<IRoleChecker, RoleCheckerService>();
 
 var app = builder.Build();
 

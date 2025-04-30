@@ -1,5 +1,5 @@
 ﻿
-@model List<FreelanceBirga.Models.DB.OrdersChat>
+@model List<FreelanceBirga.Models.VM.ChatWindowViewModelUnit>
 
 <h2>Список чатов</h2>
 
@@ -12,12 +12,11 @@
    {
     <thead>
         <tr>
-            <th>ID чата</th>
-            <th>ID заказа</th>
-            <th>Заказчик</th>
+            <th>Заказ</th>
             <th>Исполнитель</th>
+            <th>Заказчик</th>
             <th>Статус</th>
-            <th>Действия</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -26,29 +25,13 @@
         @foreach (var chat in Model)
         {
                 <tr>
-                    <td>@chat.Id</td>
-                    <td>@chat.OrderId</td>
-                    <td>@chat.CustomerId</td> 
-                    <td>@chat.ExecutorId</td> 
+                    <td>@chat.OrderName</td>
+                    <td>@chat.ExecutorName</td>
+                    <td>@chat.CustomerName</td> 
+                    <td>@chat.Status</td> 
+                   
                     <td>
-                    @switch (chat.Status)
-                    {
-                        case 0:
-                            <span class="badge badge-secondary">Неактивен</span>
-                            break;
-                        case 1:
-                            <span class="badge badge-success">Активен</span>
-                            break;
-                        case 2:
-                            <span class="badge badge-warning">Архив</span>
-                            break;
-                        default:
-                            <span class="badge badge-info">Неизвестно</span>
-                            break;
-                    }
-                    </td>
-                    <td>
-                        <a href="@Url.Action("Details", "Chat", new { id = chat.Id })" class="btn btn-primary btn-sm">Открыть</a>
+                        <a  class="btn btn-primary btn-sm">Открыть</a>
                     </td>
                 </tr>
         
