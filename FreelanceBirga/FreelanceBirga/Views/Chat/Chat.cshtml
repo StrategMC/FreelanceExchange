@@ -1,0 +1,221 @@
+﻿@model FreelanceBirga.Models.VM.ChatViewModel
+
+@{
+    ViewBag.Title = "Чат по заказу #" + Model.OrderName;
+}
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h4>Чат по заказу #@Model.OrderName</h4>
+            <div class="text-muted">Статус: <span id="statusText">@GetStatusText(Model.Status)</span></div>
+        </div>
+
+        <div class="card-body">
+            @if (Model.IsCustomer)
+            {
+                if (Model.Status == 0)
+                {
+                    <div class="mb-3">
+                        <button class="btn btn-success" onclick="changeStatus(1)">Отдать заказ</button>
+                        <button class="btn btn-danger" onclick="changeStatus(3)">Заблокировать</button>
+                    </div>
+                }
+                else if (Model.Status == 1)
+                {
+                    <div class="mb-3">
+                        <button class="btn btn-primary" onclick="changeStatus(2)">Одобрить завершение заказа</button>
+                    </div>
+                }
+            }
+            else if (!Model.IsCustomer && Model.Status == 1)
+            {
+                <div class="mb-3">
+                    <button class="btn btn-warning" onclick="changeStatus(3)">Отказаться от заказа</button>
+                </div>
+            }
+
+            <div id="chatContainer" class="chat-container">
+                @foreach (var message in Model.Messages)
+                {
+                    <div class="@(message.IsCurrentUser ? "message-current-user" : "message-other-user") mb-3">
+                        <div class="d-flex @(message.IsCurrentUser ? "justify-content-end" : "justify-content-start")">
+                            <div class="@(message.IsCurrentUser ? "bg-primary text-white" : "bg-light") p-3 rounded" style="max-width: 70%;">
+                                <div class="fw-bold">@(message.IsCurrentUser ? "Вы" : message.Sender ? "Заказчик" : "Исполнитель")</div>
+                                <div>@message.Content</div>
+                                <div class="small @(message.IsCurrentUser ? "text-white-50" : "text-muted")">@message.SendTime.ToString("g")</div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            @if (Model.Status < 2)
+            {
+                <div class="input-group mt-3">
+                    <input type="text" id="messageInput" class="form-control" placeholder="Введите сообщение..." />
+                    <button class="btn btn-primary" id="sendButton">Отправить</button>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-warning mt-3">Чат закрыт для новых сообщений</div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.14/signalr.min.js"></script>
+    <script>
+        const chatId = @Model.ChatId;
+        const isCustomer = @Json.Serialize(Model.IsCustomer);
+
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/ChatHub")
+            .configureLogging(signalR.LogLevel.Information)
+            .build();
+
+        async function startConnection() {
+            try {
+                await connection.start();
+                console.log("SignalR Connected.");
+                await connection.invoke("JoinChat", chatId);
+            } catch (err) {
+                console.log(err);
+                console.log("вот такие пироги");
+                setTimeout(startConnection, 5000);
+            }
+        }
+
+        connection.on("ReceiveMessage", (message) => {
+            const isCurrentUser = message.Sender === isCustomer;
+            const senderName = message.Sender ? "Заказчик" : "Исполнитель";
+
+            const messageHtml = `
+                        <div class="${isCurrentUser ? 'message-current-user' : 'message-other-user'} mb-3">
+                            <div class="d-flex ${isCurrentUser ? 'justify-content-end' : 'justify-content-start'}">
+                                <div class="${isCurrentUser ? 'bg-primary text-white' : 'bg-light'} p-3 rounded" style="max-width: 70%;">
+                                    <div class="fw-bold">${isCurrentUser ? 'Вы' : senderName}</div>
+                                    <div>${message.Content}</div>
+                                    <div class="small ${isCurrentUser ? 'text-white-50' : 'text-muted'}">${message.SendTime}</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+            document.getElementById('chatContainer').insertAdjacentHTML('beforeend', messageHtml);
+            scrollToBottom();
+        });
+
+        connection.on("StatusUpdated", (newStatus) => {
+            const statusText = getStatusText(newStatus);
+            document.getElementById('statusText').textContent = statusText;
+
+            if (newStatus === 2 || newStatus === 3) {
+                document.getElementById('messageInput').disabled = true;
+                document.getElementById('sendButton').disabled = true;
+
+                const statusAlert = newStatus === 2 ?
+                    '<div class="alert alert-success mt-3">Чат завершён</div>' :
+                    '<div class="alert alert-danger mt-3">Чат заблокирован</div>';
+
+                document.querySelector('.input-group')?.replaceWith(statusAlert);
+            }
+        });
+
+       async function sendMessage() {
+        const input = document.getElementById('messageInput');
+        const message = input.value.trim();
+
+        if (message) {
+            try {
+                const response = await fetch('@Url.Action("SendMessage", "Chat")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                    },
+                    body: JSON.stringify({
+                        chatId: chatId,
+                        content: message,
+                        sender: isCustomer 
+                    })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    input.value = '';
+                } else {
+                    alert(result.error || 'Ошибка отправки');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Ошибка соединения');
+            }
+        }
+    }
+
+        async function changeStatus(newStatus) {
+            if (confirm('Вы уверены, что хотите изменить статус?')) {
+                try {
+                    const response = await fetch('@Url.Action("ChangeStatus", "Chat")', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            chatId: chatId,
+                            newStatus: newStatus
+                        })
+                    });
+
+                    const result = await response.json();
+                    if (!result.success) {
+                        alert(result.error || 'Ошибка изменения статуса');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            }
+        }
+
+        function scrollToBottom() {
+            const container = document.getElementById('chatContainer');
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function getStatusText(status) {
+            switch (status) {
+                case 0: return "Обсуждение";
+                case 1: return "В работе";
+                case 2: return "Завершён";
+                case 3: return "Заблокирован";
+                default: return "Неизвестный статус";
+            }
+        }
+
+        document.getElementById('sendButton').addEventListener('click', sendMessage);
+        document.getElementById('messageInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        startConnection().then(() => {
+            scrollToBottom();
+        });
+    </script>
+}
+
+@functions {
+    public string GetStatusText(int status)
+    {
+        switch (status)
+        {
+            case 0: return "Обсуждение";
+            case 1: return "В работе";
+            case 2: return "Завершён";
+            case 3: return "Заблокирован";
+            default: return "Неизвестный статус";
+        }
+    }
+}

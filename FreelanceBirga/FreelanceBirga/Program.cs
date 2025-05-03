@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
-using FreelanceBirga.Hubs;
 using FreelanceBirga.Core.Interfaces;
 using FreelanceBirga.Core.Services;
 
@@ -65,7 +64,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.UseSession();
 
-app.MapHub<ChatHub>("/chatHub"); 
+app.MapHub<ChatHub>("/ChatHub"); 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

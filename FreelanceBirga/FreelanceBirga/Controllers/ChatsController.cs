@@ -89,13 +89,16 @@ namespace FreelanceBirga.Controllers
                             break;
                     }
                 }
+                
                 ChatWindowViewModelUnit chatWindowViewModelUnit = new ChatWindowViewModelUnit
                 {
+                    Id = ordersChats[i].Id,
                     OrderName = orderTemp.Title,
                     ExecutorName = executorTemp.Username,
                     CustomerName = customerTemp.Username,
                     Status = status
                 };
+              
                 model.Add(chatWindowViewModelUnit);
             }
             return View(model);

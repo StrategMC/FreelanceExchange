@@ -1,41 +1,38 @@
-﻿
-@model List<FreelanceBirga.Models.VM.ChatWindowViewModelUnit>
+﻿@model List<FreelanceBirga.Models.VM.ChatWindowViewModelUnit>
 
 <h2>Список чатов</h2>
 
 <table class="table">
     @if (!Model.Any())
     {
-            <div class="alert alert-info">Чатов не найдено</div>
-    }
-   else
-   {
-    <thead>
         <tr>
-            <th>Заказ</th>
-            <th>Исполнитель</th>
-            <th>Заказчик</th>
-            <th>Статус</th>
-            <th></th>
+            <td colspan="5" class="alert alert-info">Чатов не найдено</td>
         </tr>
-    </thead>
-    <tbody>
-      
-       
-        @foreach (var chat in Model)
-        {
+    }
+    else
+    {
+        <thead>
+            <tr>
+                <th>Заказ</th>
+                <th>Исполнитель</th>
+                <th>Заказчик</th>
+                <th>Статус</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var chat in Model)
+            {
                 <tr>
                     <td>@chat.OrderName</td>
                     <td>@chat.ExecutorName</td>
-                    <td>@chat.CustomerName</td> 
-                    <td>@chat.Status</td> 
-                   
+                    <td>@chat.CustomerName</td>
+                    <td>@chat.Status</td>
                     <td>
-                        <a  class="btn btn-primary btn-sm">Открыть</a>
+                        <a asp-action="Chat" asp-controller="Chat" asp-route-chatId="@chat.Id" class="btn btn-primary btn-sm">Открыть</a>
                     </td>
                 </tr>
-        
-        }
-    </tbody>
-   }
+            }
+        </tbody>
+    }
 </table>

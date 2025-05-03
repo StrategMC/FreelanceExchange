@@ -233,39 +233,15 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "SearchOrders.cshtml",
-              "DocumentMoniker": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Views\\Orders\\SearchOrders.cshtml",
-              "RelativeDocumentMoniker": "FreelanceBirga\\Views\\Orders\\SearchOrders.cshtml",
-              "ToolTip": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Views\\Orders\\SearchOrders.cshtml",
-              "RelativeToolTip": "FreelanceBirga\\Views\\Orders\\SearchOrders.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAqAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "ChatsWindow.cshtml",
+              "DocumentMoniker": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Views\\Chats\\ChatsWindow.cshtml",
+              "RelativeDocumentMoniker": "FreelanceBirga\\Views\\Chats\\ChatsWindow.cshtml",
+              "ToolTip": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Views\\Chats\\ChatsWindow.cshtml",
+              "RelativeToolTip": "FreelanceBirga\\Views\\Chats\\ChatsWindow.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAMwBIAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-30T10:00:46.779Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "dbo.Orders [\u0414\u0430\u043D\u043D\u044B\u0435]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/BirgaDB/True/SqlTable/dbo.Orders.sql",
-              "ToolTip": "dbo.Orders [\u0414\u0430\u043D\u043D\u044B\u0435]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-04-30T10:30:33.572Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "dbo.OrdersChat [\u0414\u0430\u043D\u043D\u044B\u0435]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/BirgaDB/True/SqlTable/dbo.OrdersChat.sql",
-              "ToolTip": "dbo.OrdersChat [\u0414\u0430\u043D\u043D\u044B\u0435]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-04-30T11:23:53.336Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T11:04:21.073Z"
             },
             {
               "$type": "Document",
@@ -277,23 +253,37 @@
               "RelativeToolTip": "FreelanceBirga\\Controllers\\ChatsController.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAEsAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T11:04:14.679Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T11:04:14.679Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ChatsWindow.cshtml",
-              "DocumentMoniker": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Views\\Chats\\ChatsWindow.cshtml",
-              "RelativeDocumentMoniker": "FreelanceBirga\\Views\\Chats\\ChatsWindow.cshtml",
-              "ToolTip": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Views\\Chats\\ChatsWindow.cshtml",
-              "RelativeToolTip": "FreelanceBirga\\Views\\Chats\\ChatsWindow.cshtml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAMwBIAAAAPAAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "dbo.OrdersChat.sql",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/BirgaDB/True/SqlTable/dbo.OrdersChat.sql",
+              "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/BirgaDB/True/SqlTable/dbo.OrdersChat.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-04-30T11:23:53.336Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "dbo.Orders.sql",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/BirgaDB/True/SqlTable/dbo.Orders.sql",
+              "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/BirgaDB/True/SqlTable/dbo.Orders.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-04-30T10:30:33.572Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SearchOrders.cshtml",
+              "DocumentMoniker": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Views\\Orders\\SearchOrders.cshtml",
+              "RelativeDocumentMoniker": "FreelanceBirga\\Views\\Orders\\SearchOrders.cshtml",
+              "ToolTip": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Views\\Orders\\SearchOrders.cshtml",
+              "RelativeToolTip": "FreelanceBirga\\Views\\Orders\\SearchOrders.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-30T11:04:21.073Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T10:00:46.779Z"
             },
             {
               "$type": "Document",
@@ -301,9 +291,9 @@
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "FreelanceBirga\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Views\\Shared\\_Layout.cshtml*",
-              "RelativeToolTip": "FreelanceBirga\\Views\\Shared\\_Layout.cshtml*",
-              "ViewState": "AgIAACUAAAAAAAAAAAAMwDUAAABrAAAAAAAAAA==",
+              "ToolTip": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "FreelanceBirga\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAACUAAAAAAAAAAAAcwDUAAABrAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-03-21T13:49:15.532Z",
               "EditorCaption": ""
@@ -318,8 +308,7 @@
               "RelativeToolTip": "FreelanceBirga\\Core\\Interfaces\\IRoleChecker.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T14:05:19.628Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T14:05:19.628Z"
             },
             {
               "$type": "Document",
@@ -331,8 +320,7 @@
               "RelativeToolTip": "FreelanceBirga\\Program.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAMwCsAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T12:10:25.648Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-21T12:10:25.648Z"
             },
             {
               "$type": "Document",
@@ -344,8 +332,7 @@
               "RelativeToolTip": "FreelanceBirga\\Core\\Services\\RoleCheckerService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T14:05:57.426Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T14:05:57.426Z"
             },
             {
               "$type": "Document",
@@ -357,8 +344,7 @@
               "RelativeToolTip": "FreelanceBirga\\Models\\VM\\ChatWindowViewModelUnit.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T11:48:30.753Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T11:48:30.753Z"
             },
             {
               "$type": "Document",
@@ -370,8 +356,7 @@
               "RelativeToolTip": "FreelanceBirga\\Controllers\\SearchWindowsController.cs",
               "ViewState": "AgIAAHUAAAAAAAAAAAAowGYAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T12:15:28.099Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T12:15:28.099Z"
             },
             {
               "$type": "Document",
@@ -383,8 +368,7 @@
               "RelativeToolTip": "FreelanceBirga\\Models\\DB\\OrdersChat.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T11:04:34.655Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T11:04:34.655Z"
             },
             {
               "$type": "Document",
@@ -396,8 +380,7 @@
               "RelativeToolTip": "FreelanceBirga\\Models\\VM\\CustomerViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T11:48:33.411Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T11:48:33.411Z"
             },
             {
               "$type": "Document",
@@ -409,8 +392,7 @@
               "RelativeToolTip": "FreelanceBirga\\Models\\DB\\Order.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T11:11:07.827Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T11:11:07.827Z"
             },
             {
               "$type": "Document",
@@ -422,8 +404,7 @@
               "RelativeToolTip": "FreelanceBirga\\Views\\Chats\\Chat.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-30T11:04:22.759Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T11:04:22.759Z"
             },
             {
               "$type": "Document",
@@ -435,8 +416,7 @@
               "RelativeToolTip": "FreelanceBirga\\Controllers\\AddRoleController.cs",
               "ViewState": "AgIAAFIAAAAAAAAAAAAQwC8AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T12:01:50.346Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-04T12:01:50.346Z"
             },
             {
               "$type": "Document",
@@ -448,8 +428,7 @@
               "RelativeToolTip": "FreelanceBirga\\Controllers\\MainPagesController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T11:51:04.83Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-28T11:51:04.83Z"
             },
             {
               "$type": "Document",
@@ -461,8 +440,7 @@
               "RelativeToolTip": "FreelanceBirga\\Controllers\\AdminController.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T10:34:50.926Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T10:34:50.926Z"
             },
             {
               "$type": "Document",
@@ -474,8 +452,7 @@
               "RelativeToolTip": "FreelanceBirga\\Models\\AppDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T13:44:44.761Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-21T13:44:44.761Z"
             },
             {
               "$type": "Document",
@@ -487,8 +464,7 @@
               "RelativeToolTip": "FreelanceBirga\\Models\\VM\\OrdersModerationViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T10:15:45.249Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T10:15:45.249Z"
             },
             {
               "$type": "Document",
@@ -500,8 +476,7 @@
               "RelativeToolTip": "FreelanceBirga\\Controllers\\OrdersController.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwB0AAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T10:17:25.875Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T10:17:25.875Z"
             },
             {
               "$type": "Document",
@@ -513,8 +488,7 @@
               "RelativeToolTip": "FreelanceBirga\\Controllers\\AccountController.cs",
               "ViewState": "AgIAABkAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T12:18:49.185Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T12:18:49.185Z"
             },
             {
               "$type": "Document",
@@ -526,8 +500,7 @@
               "RelativeToolTip": "FreelanceBirga\\Models\\VM\\SearchOrdersViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T10:12:25.661Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T10:12:25.661Z"
             },
             {
               "$type": "Document",
@@ -539,8 +512,7 @@
               "RelativeToolTip": "FreelanceBirga\\Models\\VM\\OrderViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T10:28:38.419Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T10:28:38.419Z"
             },
             {
               "$type": "Document",
@@ -552,8 +524,7 @@
               "RelativeToolTip": "FreelanceBirga\\Controllers\\ProfileController.cs",
               "ViewState": "AgIAACoAAAAAAAAAAAAYwDcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T13:51:44.354Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-12T13:51:44.354Z"
             },
             {
               "$type": "Document",
@@ -565,8 +536,7 @@
               "RelativeToolTip": "FreelanceBirga\\Views\\Orders\\AddOrders.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-16T10:08:41.223Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T10:08:41.223Z"
             },
             {
               "$type": "Document",

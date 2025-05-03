@@ -11,12 +11,12 @@
       "RelativeMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|solutionrelative:freelancebirga\\views\\chats\\chatswindow.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|d:\\frelance\\freelanceexchange\\freelancebirga\\freelancebirga\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|solutionrelative:freelancebirga\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|d:\\frelance\\freelanceexchange\\freelancebirga\\freelancebirga\\core\\interfaces\\irolechecker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|solutionrelative:freelancebirga\\core\\interfaces\\irolechecker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|d:\\frelance\\freelanceexchange\\freelancebirga\\freelancebirga\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|solutionrelative:freelancebirga\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F925BEFD-377B-48DF-8A9A-70BB5D617F4D}|FreelanceBirga\\FreelanceBirga.csproj|d:\\frelance\\freelanceexchange\\freelancebirga\\freelancebirga\\core\\services\\rolecheckerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -229,7 +229,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
@@ -297,41 +297,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Program.cs",
-              "RelativeDocumentMoniker": "FreelanceBirga\\Program.cs",
-              "ToolTip": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Program.cs*",
-              "RelativeToolTip": "FreelanceBirga\\Program.cs*",
-              "ViewState": "AgIAABsAAAAAAAAAAAAMwCsAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T12:10:25.648Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "FreelanceBirga\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Views\\Shared\\_Layout.cshtml*",
               "RelativeToolTip": "FreelanceBirga\\Views\\Shared\\_Layout.cshtml*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACUAAAAAAAAAAAAMwDUAAABrAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-03-21T13:49:15.532Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "IRoleChecker.cs",
               "DocumentMoniker": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Core\\Interfaces\\IRoleChecker.cs",
               "RelativeDocumentMoniker": "FreelanceBirga\\Core\\Interfaces\\IRoleChecker.cs",
               "ToolTip": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Core\\Interfaces\\IRoleChecker.cs",
               "RelativeToolTip": "FreelanceBirga\\Core\\Interfaces\\IRoleChecker.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-30T14:05:19.628Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Program.cs",
+              "RelativeDocumentMoniker": "FreelanceBirga\\Program.cs",
+              "ToolTip": "D:\\FRELANCE\\FreelanceExchange\\FreelanceBirga\\FreelanceBirga\\Program.cs",
+              "RelativeToolTip": "FreelanceBirga\\Program.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAMwCsAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T12:10:25.648Z",
               "EditorCaption": ""
             },
             {

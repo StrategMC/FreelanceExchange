@@ -12,6 +12,7 @@ namespace FreelanceBirga.Models.DB
         public int Id { get; set; }
         public int ChatId { get; set; }
         public string Content { get;set; }
+        public bool Sender { get; set; }
         public DateTime SendTime {  get; set; }
     }
 }
