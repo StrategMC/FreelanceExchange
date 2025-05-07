@@ -16,4 +16,7 @@ public class AppDbContext : DbContext
     public DbSet<Order> Orders { get; set; }
     public DbSet<OrdersChat> OrdersChat { get; set; }
     public DbSet<Message> Messages { get; set; }
+    public DbSet<ReviewCustomer> ReviewsCustomer { get; set; }
+    public DbSet<ReviewExecutor> ReviewsExecutor { get; set; }
+    public DbSet<OrderChatForRewiew> OrdersChatForRewiew { get; set; }
 }

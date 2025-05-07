@@ -24,8 +24,18 @@
                 else if (Model.Status == 1)
                 {
                     <div class="mb-3">
-                        <button class="btn btn-primary" onclick="changeStatus(2)">Одобрить завершение заказа</button>
+                        <button class="btn btn-success" onclick="changeStatus(2)">Одобрить завершение заказа</button>
+                        <button class="btn btn-danger" onclick="changeStatus(3)">Прекратить работу с исполнителем</button>
                     </div>
+                }
+                else
+                {
+                    @if (Model.ShowReviewButton)
+                    {
+                        <div class="mt-3">
+                            <a class="btn btn-info" asp-controller="Review" asp-action="Review">Поставить отзыв</a>
+                        </div>
+                    }
                 }
             }
             else if (!Model.IsCustomer && Model.Status == 1)
@@ -33,6 +43,12 @@
                 <div class="mb-3">
                     <button class="btn btn-warning" onclick="changeStatus(3)">Отказаться от заказа</button>
                 </div>
+                @if (Model.ShowReviewButton)
+                {
+                    <div class="mt-3">
+                        <button class="btn btn-info" onclick="showReviewModal()">Поставить отзыв</button>
+                    </div>
+                }
             }
 
             <div id="chatContainer" class="chat-container">
@@ -146,6 +162,7 @@
                 const result = await response.json();
                 if (result.success) {
                     input.value = '';
+                    location.reload();
                 } else {
                     alert(result.error || 'Ошибка отправки');
                 }
@@ -173,6 +190,9 @@
                     const result = await response.json();
                     if (!result.success) {
                         alert(result.error || 'Ошибка изменения статуса');
+                    }
+                    else{
+                        location.reload();
                     }
                 } catch (error) {
                     console.error('Error:', error);
