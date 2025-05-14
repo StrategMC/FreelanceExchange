@@ -10,5 +10,6 @@
         public int Status { get; set; }
         public List<MessageViewModel> Messages { get; set; }
         public bool ShowReviewButton { get; set; }
+        public List<ReviewForProfileViewModel> Review {  get; set; }
     }
 }

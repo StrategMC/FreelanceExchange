@@ -33,7 +33,7 @@
                     @if (Model.ShowReviewButton)
                     {
                         <div class="mt-3">
-                            <a class="btn btn-info" asp-controller="Review" asp-action="Review">Поставить отзыв</a>
+                            <a class="btn btn-info" asp-controller="Review" asp-action="Review" asp-route-IsCustomer="@Model.IsCustomer" asp-route-ChatId="@Model.ChatId">Поставить отзыв</a>
                         </div>
                     }
                 }

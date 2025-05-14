@@ -99,11 +99,11 @@ public class ChatController : Controller
         bool user_have_review = true;
         if (executorId != null)
         {
-            user_have_review = await _context.ReviewsExecutor.AnyAsync(rw => rw.OrderId == chat.OrderId && rw.SenderId == chat.CustomerId);
+            user_have_review = await _context.ReviewsExecutor.AnyAsync(rw => rw.OrderId == chat.OrderId && rw.RecipientId == chat.CustomerId);
         }
         else if(customerId != null) 
         {
-            user_have_review = await _context.ReviewsCustomer.AnyAsync(rw => rw.OrderId == chat.OrderId && rw.SenderId == chat.ExecutorId);
+            user_have_review = await _context.ReviewsCustomer.AnyAsync(rw => rw.OrderId == chat.OrderId && rw.RecipientId == chat.ExecutorId);
         }
         if (!user_have_review)
         {

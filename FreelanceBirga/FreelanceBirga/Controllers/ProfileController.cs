@@ -58,7 +58,7 @@ namespace FreelanceBirga.Controllers
             return View(model);
         }
         [HttpGet]
-        public IActionResult CustomerProfile(int id)
+        public async Task<IActionResult> CustomerProfile(int id)
         {
             userId = HttpContext.Session.GetInt32("UserId");
             if (!userId.HasValue)
@@ -66,6 +66,12 @@ namespace FreelanceBirga.Controllers
                 return RedirectToAction("Index", "Home");
             }
             var customer = _context.Customers.Where(c => c.Id == id).FirstOrDefault();
+            //List<ReviewCustomer> reviews = await _context.ReviewsCustomer.Where(ut => ut.SenderId == customer.Id).ToListAsync();
+            //List<ReviewViewModel> reviewModels = new List<ReviewViewModel>();
+            //foreach (var item in reviews)
+            //{
+                
+            //}
             CustomerViewModel model = new CustomerViewModel
             {
                 Username = customer.Username,

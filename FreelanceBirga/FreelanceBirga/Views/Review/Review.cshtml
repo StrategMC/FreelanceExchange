@@ -1,8 +1,78 @@
-﻿<html>
-	<head>
+﻿@model FreelanceBirga.Models.VM.ReviewViewModel
 
-	</head>
-	<body>
-		<h1>Hello, тут отзывы будут</h1>
-	</body>
-</html>
+
+<h2>Отзыв на пользователя: @Model.SendlerName По проекту: @Model.OrderName</h2>
+
+<div class="star-rating">
+    @for (int i = 1; i <= 5; i++)
+    {
+        <span class="star" data-rating="@i">★</span>
+    }
+    
+    <span asp-validation-for="Mark" class="text-danger"></span>
+</div>
+
+<form asp-action="Review" method="post">
+<div class="comment-box">
+    <textarea asp-for="Description" placeholder="Ваш комментарий..."></textarea>
+</div>
+
+
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="ChatId" /> 
+    <input type="hidden" asp-for="IsCustomer" /> 
+    <input type="hidden" asp-for="Mark" id="selectedRating" value="0" />
+    <button type="submit" class="submit-btn">Отправить отзыв</button>
+</form>
+
+
+
+<style>
+    .star-rating {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    .star {
+        color: #ccc;
+        cursor: pointer;
+    }
+    .star:hover,
+    .star.active {
+        color: gold;
+    }
+    .comment-box textarea {
+        width: 100%;
+        min-height: 100px;
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+    .submit-btn {
+        padding: 8px 15px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const stars = document.querySelectorAll('.star');
+        const ratingInput = document.getElementById('selectedRating');
+
+        stars.forEach(star => {
+            star.addEventListener('click', function() {
+                const rating = this.getAttribute('data-rating');
+                ratingInput.value = rating;
+
+                stars.forEach((s, index) => {
+                    if (index < rating) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+            });
+        });
+    });
+</script>
