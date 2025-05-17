@@ -1,5 +1,4 @@
-﻿@model FreelanceBirga.Models.DB.Customer
-<!DOCTYPE html>
+﻿@model FreelanceBirga.Models.VM.CustomerViewModel
 <html>
 <head>
     <title>Профиль заказчика</title>
@@ -91,6 +90,26 @@
             font-size: 1.2rem;
         }
 
+        .review-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .review-author {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .review-rating {
+            color: #ffc107;
+            margin-bottom: 5px;
+        }
+
+        .review-text {
+            margin-top: 5px;
+        }
+
         @@media (max-width: 768px) {
             .main-content,
             .secondary-content {
@@ -117,25 +136,25 @@
                 <div class="rating-section">
                     <h4>Рейтинг</h4>
                     <div class="rating-value">
-                        @(Model.ColRating > 0 ? (Model.Rating / Model.ColRating).ToString("0.0") : "0.0")/5
+                        @Model.Rating.ToString("0")/5
                     </div>
                     <div class="stars-container">
                         @{
-                            double ratingValue = Model.ColRating > 0 ? Model.Rating / Model.ColRating : 0;
+                            double ratingValue =  Model.Rating ;
                         }
                         @for (int i = 1; i <= 5; i++)
                         {
                             if (i <= ratingValue)
                             {
-                                        <span>★</span>
+                                <span>★</span>
                             }
                             else if (i - 0.5 <= ratingValue)
                             {
-                                        <span>½</span>
+                                <span>½</span>
                             }
                             else
                             {
-                                        <span>☆</span>
+                                <span>☆</span>
                             }
                         }
                     </div>
@@ -144,9 +163,35 @@
 
                 <div class="reviews-section">
                     <h4>Отзывы</h4>
-                    <div class="reviews-placeholder">
-                        <p>Здесь будут отображаться отзывы о работе с заказчиком</p>
-                    </div>
+                    @if (Model.Reviews != null && Model.Reviews.Any())
+                    {
+                        foreach (var review in Model.Reviews)
+                        {
+                            <div class="review-item">
+                                <div class="review-author">@review.ProfileName</div>
+                                <div class="review-rating">
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        if (i <= review.Mark)
+                                        {
+                                            <span>★</span>
+                                        }
+                                        else
+                                        {
+                                            <span>☆</span>
+                                        }
+                                    }
+                                </div>
+                                <div class="review-text">@review.Description</div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="reviews-placeholder">
+                            <p>Пока нет отзывов</p>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

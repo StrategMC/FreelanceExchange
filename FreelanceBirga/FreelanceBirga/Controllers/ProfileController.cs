@@ -17,7 +17,7 @@ namespace FreelanceBirga.Controllers
             _context = context;
         }
         [HttpGet]
-        public IActionResult ExecutorProfile(int id)
+        public async Task<IActionResult> ExecutorProfile(int id)
         {
             userId = HttpContext.Session.GetInt32("UserId");
             if (!userId.HasValue)
@@ -44,6 +44,20 @@ namespace FreelanceBirga.Controllers
                 return NotFound();
             }
 
+            List<ReviewExecutor> reviews = await _context.ReviewsExecutor.Where(rw => rw.RecipientId == executorWithTags.Executor.Id).ToListAsync();
+            List<ReviewForProfileViewModel> reviewViewModels = new List<ReviewForProfileViewModel>();
+            foreach (var review in reviews)
+            {
+                var customer = await _context.Customers.FindAsync(review.SenderId);
+                ReviewForProfileViewModel reviewForProfile = new ReviewForProfileViewModel
+                {
+                    ProfileName = customer.Username,
+                    Description = review.Content,
+                    Mark = review.Mark,
+                };
+                reviewViewModels.Add(reviewForProfile);
+            }
+
             var model = new ExecutorViewModel
             {
                 Id = executorWithTags.Executor.Id,
@@ -52,7 +66,8 @@ namespace FreelanceBirga.Controllers
                 Description = executorWithTags.Executor.Description,
                 Rating = executorWithTags.Executor.Rating,
                 ColRating = executorWithTags.Executor.ColRating,
-                Tags = executorWithTags.Tags
+                Tags = executorWithTags.Tags,
+                Reviews = reviewViewModels
             };
 
             return View(model);
@@ -70,15 +85,28 @@ namespace FreelanceBirga.Controllers
             //List<ReviewViewModel> reviewModels = new List<ReviewViewModel>();
             //foreach (var item in reviews)
             //{
-                
+
             //}
+            List<ReviewCustomer> reviews = await _context.ReviewsCustomer.Where(rw => rw.RecipientId == customer.Id).ToListAsync();
+            List<ReviewForProfileViewModel> reviewViewModels = new List<ReviewForProfileViewModel>();
+            foreach (var review in reviews)
+            {
+                var executor = await _context.Executors.FindAsync(review.SenderId);
+                ReviewForProfileViewModel reviewForProfile = new ReviewForProfileViewModel
+                {
+                    ProfileName = executor.Username,
+                    Description = review.Content,
+                    Mark = review.Mark,
+                };
+                reviewViewModels.Add(reviewForProfile);
+            }
             CustomerViewModel model = new CustomerViewModel
             {
                 Username = customer.Username,
                 Description = customer.Description,
                 ColRating = customer.ColRating,
-                Rating = customer.Rating
-
+                Rating = customer.Rating,
+                Reviews = reviewViewModels
             };
             return View(model);
         }

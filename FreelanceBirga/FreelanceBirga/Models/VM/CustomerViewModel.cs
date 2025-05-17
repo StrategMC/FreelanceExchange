@@ -11,6 +11,7 @@ namespace FreelanceBirga.Models.VM
         public string Description { get; set; }
         public int Rating { get; set; } = 0;
         public int ColRating { get; set; } = 0;
+        public List<ReviewForProfileViewModel> Reviews { get; set; }
 
     }
 }

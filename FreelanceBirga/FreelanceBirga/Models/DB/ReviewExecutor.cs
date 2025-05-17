@@ -12,6 +12,6 @@ namespace FreelanceBirga.Models.DB
         public int RecipientId { get; set; }
         public int OrderId { get; set; }
         public int Mark {  get; set; }  
-        public string Content {  get; set; }
+        public string? Content {  get; set; }
     }
 }

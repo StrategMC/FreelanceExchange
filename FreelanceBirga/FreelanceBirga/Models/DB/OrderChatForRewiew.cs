@@ -8,5 +8,7 @@ namespace FreelanceBirga.Models.DB
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public int OrderChatId { get; set; }
+        public bool ExecutorReview { get; set; } = false;
+        public bool CustomerReview { get; set; } = false;
     }
 }

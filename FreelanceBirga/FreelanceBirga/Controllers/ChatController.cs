@@ -97,13 +97,14 @@ public class ChatController : Controller
             return false;
         }
         bool user_have_review = true;
+        var chat_for_review = await _context.OrdersChatForRewiew.Where(ut => ut.OrderChatId == chat.Id).FirstOrDefaultAsync();
         if (executorId != null)
         {
-            user_have_review = await _context.ReviewsExecutor.AnyAsync(rw => rw.OrderId == chat.OrderId && rw.RecipientId == chat.CustomerId);
+                user_have_review = chat_for_review.ExecutorReview;
         }
-        else if(customerId != null) 
-        {
-            user_have_review = await _context.ReviewsCustomer.AnyAsync(rw => rw.OrderId == chat.OrderId && rw.RecipientId == chat.ExecutorId);
+        else if (customerId != null)
+        { 
+            user_have_review = chat_for_review.CustomerReview;
         }
         if (!user_have_review)
         {
