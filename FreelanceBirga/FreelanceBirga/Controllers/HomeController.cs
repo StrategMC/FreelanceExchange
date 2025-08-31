@@ -20,7 +20,7 @@ public class HomeController : Controller
             HttpContext.Session.SetInt32("UserId", userId);
             return RedirectToAction("MainPage", "MainPages");
         }
-        
+
         return View();
     }
 }

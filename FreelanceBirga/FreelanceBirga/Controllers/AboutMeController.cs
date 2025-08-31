@@ -131,7 +131,9 @@ namespace FreelanceBirga.Controllers
                 Description = customer.Description,
                 Rating = customer.Rating,
                 ColRating = customer.ColRating,
-                Reviews = reviewViewModels
+                Reviews = reviewViewModels,
+                Money = customer.Money,
+                OnHoldMoney = customer.OnHoldMoney
             };
             return View(model);
         }
@@ -182,7 +184,8 @@ namespace FreelanceBirga.Controllers
                 Rating = executor.Rating,
                 ColRating = executor.ColRating,
                 Tags = tagsValue,
-                Reviews = reviewViewModels
+                Reviews = reviewViewModels,
+                Money = executor.Money
             };
             return View(model);
         }

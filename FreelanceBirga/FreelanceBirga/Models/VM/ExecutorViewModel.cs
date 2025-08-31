@@ -18,6 +18,7 @@
             public int ColRating { get; set; } = 0;  
             public int UserId { get; set; }
             public List<ReviewForProfileViewModel> Reviews { get; set; }
+            public int Money { get; set; } = 0;
         }
     }
 

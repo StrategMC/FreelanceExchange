@@ -1,0 +1,19 @@
+﻿@model FreelanceBirga.Models.VM.MoneyViewModel
+<style>
+    .alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+</style>
+<h6>Снять деньги</h6>
+<form method="post">
+    <input type="number" min="0" name="Money" value="@Model.Money" />
+	<button type="submit">Снять</button>
+</form>
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        @Html.ValidationSummary()
+    </div>
+}

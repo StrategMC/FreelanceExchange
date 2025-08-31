@@ -116,6 +116,55 @@
                 flex-direction: column;
             }
         }
+
+        .balance-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: #fff;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            width: fit-content;
+        }
+
+        .balance-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .balance-amount {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #28a745; 
+        }
+
+        .onhold-amount {
+            font-size: 1rem;
+            color: #dc3545; 
+        }
+
+        .replenish-btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: white !important;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .replenish-btn:hover {
+            background-color: #0069d9;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -124,6 +173,13 @@
             <div class="username-section">
                 @Model.Username
             </div>
+            <div class="balance-section">
+                <div class="balance-info">
+                    <span class="balance-amount">@Model.Money$</span>
+                    <span class="onhold-amount">На удержании: @Model.OnHoldMoney$</span>
+                </div>
+                <a class="replenish-btn" asp-controller="Money" asp-action="PutMoney">Пополнить баланс</a>
+            </div>
 
             <div class="main-content">
                 <div class="description-section">
@@ -131,6 +187,7 @@
                     <p>@Model.Description</p>
                 </div>
             </div>
+            
 
             <div class="secondary-content">
                 <div class="rating-section">

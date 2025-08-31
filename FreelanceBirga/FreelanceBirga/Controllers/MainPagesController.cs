@@ -35,6 +35,12 @@ namespace FreelanceBirga.Controllers
                 return RedirectToAction("Index", "Home");
             }
             User user = GetCurrentUser();
+            if (user == null)
+            {
+                Console.WriteLine($"Не удалось получить пользователя по userId: {userId}");
+                return RedirectToAction("Index", "Home");
+            }
+
             ViewBag.CustomerRole = false;
             ViewBag.ExecutorRole = false;
            

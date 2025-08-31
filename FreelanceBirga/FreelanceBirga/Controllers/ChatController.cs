@@ -217,6 +217,10 @@ public class ChatController : Controller
                 {
                     var order = await _context.Orders.FindAsync(chat.OrderId);
                     order.Redy = true;
+                    var executor = await _context.Executors.FindAsync(order.ExecutorID);
+                    executor.Money += order.Price;
+                    var customer = await _context.Customers.FindAsync(order.CustomerID);
+                    customer.OnHoldMoney -= order.Price;
                 }
                 break;
             case 3:
